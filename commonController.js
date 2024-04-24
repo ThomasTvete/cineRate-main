@@ -41,9 +41,11 @@ function todaysDate(){
 }
 
 function sortArrayByInput(input) {
+    console.log(input);
     sortedArray = model.data.movies.slice().sort(
         (a, b) => (a[input] < b[input]) ? 1 : (a[input] > b[input]) ? -1 : 0
     );
+    console.log(sortedArray);
 }
 
 function updateRating(){
