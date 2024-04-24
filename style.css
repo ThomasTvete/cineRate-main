@@ -1,0 +1,339 @@
+/* PALETTE HEX CODES */
+.colorPalette {
+    /*Background*/
+    color: #352F44;
+    /*Darker*/
+    color: #5C5470;
+    /*Lighter*/
+    color: #B9B4C7;
+    /*Text*/
+    color: #FAF0E6;
+}
+
+/* ^ Remove at end of project ^ */
+
+body {
+    background-color: #352F44;
+    color: #FAF0E6;
+}
+
+/* START, Navigation bar*/
+#navBar {
+    margin: 8px;
+    display: flex;
+    align-items: center;
+    height: 50px;
+    background-color: #352F44;
+}
+
+#navBarLeft {
+    flex: 1;
+    display: flex;
+    justify-content: flex-start;
+    /* border: 1px solid #5C5470; */
+}
+
+#navBarCenter {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    /* border: 1px solid #5C5470; */
+    font-size: 36px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#navBarRight {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    /* border: 1px solid #5C5470; */
+}
+
+#navSearchBar {
+    display: flex;
+    justify-content: center;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    max-height: 50px;
+    /* border: 1px solid #5C5470; */
+}
+
+button#navButton {
+    color: #FAF0E6;
+    margin: 15px;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+#navSearchBar .searchIcon {
+    position: absolute;
+    left: 8px;
+    top: 0px;
+    width: 10px;
+    height: 18px;
+    padding: 8px 0px;
+}
+
+#navSearchBar .searchIcon img {
+    width: 16px;
+}
+
+#navSearchBar .searchDiv {
+    position: relative;
+    width: 300px;
+    align-items: center;
+}
+
+#searchInput {
+    width: 100%;
+    opacity: 100%;
+    border: 1px solid #FAF0E6;
+    background-color: transparent;
+    margin: 0;
+    padding: 8px 8px 8px 30px;
+    font-size: 16px;
+    color: #FAF0E6;
+    /* border: 1px solid black; */
+    border-radius: inherit;
+}
+
+input[type="text"]::placeholder {
+    color: #5C5470;
+}
+
+input[type="text"]:focus {
+    box-shadow: 0 0 4px 0 #FAF0E6;
+    border-color: #FAF0E6;
+    outline: none;
+}
+
+/* END, Navigation bar*/
+
+/* START, home page*/
+
+.dropbtnHome {
+    background-color: #5C5470;
+    color: white;
+    padding: 12px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+.dropbtnHome:hover, .dropbtnHome:focus {
+    background-color: #9488b4;
+}
+.dropDownHome {
+    position: relative;
+    display: inline-block;
+}
+.dropdown-content-home {
+    display: none;
+    position: absolute;
+    background-color: #9488b4;
+    min-width: 137px;
+    max-width: 137px;
+    box-shadow: 0px 8px 16px 0px #9488b4;
+    z-index: 1;
+}
+.dropdown-content-home button {
+    color: #FAF0E6;
+    background-color: #5C5470;
+    border: transparent;
+    padding: 8px 8px;
+    display: block;
+}
+.dropDownHTML {
+    grid-column: 3;
+    justify-self: center;
+}
+.dropdown-content-home button:hover {background-color: #9488b4;}
+.show {display:grid;}
+  
+.h1Home {
+    margin-top: 20px;
+    margin-bottom: 5px;
+    height: 45px;
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    justify-content: center;
+    align-items: center;
+    background-color: #5C5470;
+    max-width: 100%;
+}
+.h1Home h1 {
+    grid-column: 2;
+    justify-self: center;
+}
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
+    justify-content: center;
+    text-align: center;
+}
+
+.grid-box {
+    max-width: 300px;
+    max-height: 550px;
+    background-color: #5C5470;
+    border: 8px solid #352F44;
+}
+
+.grid-title {
+    justify-content: center;
+    align-items: center;
+    height: 20px;
+    width: 300px;
+    font-size: calc(0.5vw + 0.5vh); 
+}
+
+.grid-movie-info {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    grid-template-rows: auto auto auto;
+    justify-content: center;
+    align-items: center;
+    /*     margin-top: 2px; */
+    background-color: #9488b4;
+}
+
+.grid-movie-info .a {
+    grid-column: col 1 / span 2;
+    grid-row: row;
+    justify-content: center;
+    align-items: center;
+    height: 25px;
+/*     border: solid 1px black; */
+}
+.grid-movie-info .b {
+    grid-column: col 3 / span 2;
+    grid-row: row;
+    justify-content: center;
+    align-items: center;
+    height: 25px;
+    /*     border: solid 1px black; */
+}
+.grid-movie-info .c {
+    grid-column: col 1 / span 1;
+    grid-row: row 2;
+    /*     margin-left: 20px; */
+    margin-right: 8px;
+    justify-content: center;
+    align-items: center;
+    height: 25px;
+/*     border: solid 1px black; */
+}
+.grid-movie-info .d {
+    grid-column: col 2 / span 3;
+    grid-row: row 2;
+    width: 193px;
+    margin-right: 10px;
+    justify-content: left;
+    align-items: center;
+    height: 25px;
+    font-size: calc(0.6vw + 0.5vh);
+    /*     border: solid 1px black; */
+}
+.grid-movie-info .e {
+    grid-column: col 2 / span 2;
+    grid-row: row 3;
+    justify-content: center;
+    align-items: center;
+    height: 25px;
+    /*     border: solid 1px black; */
+}
+
+.grid-movie-genre {
+    display: flex;
+    justify-content: center;
+    margin-top: 2px;
+    grid-template-columns: 10% 80%;
+    background-color: #9488b4;
+}
+
+/* END, home page*/
+
+/* START, FilmDetail page*/
+.headerCard {
+    background-color: #5C5470;
+    display: flex;
+    justify-content: center
+}
+.reviewHeader {
+    background-color: #5C5470;
+    display: flex;
+    justify-content: space-between;
+}
+
+#cancelRateBtn{
+    color: red;
+}
+
+.movieDetails {
+    background-color: #9488b4;
+    display: flex;
+    border: 2px solid black;
+    padding: 4px;
+    border-radius: 7px;
+}
+
+.rating {
+    background-color: #5C5470;
+}
+
+.director {
+    background-color: #5C5470;
+}
+
+.screenwriters {
+    background-color: #5C5470;
+}
+
+.actors {
+    background-color: #5C5470;
+}
+
+.reviewBox {
+    background-color: #5C5470;
+}
+
+.reviewText {
+    background-color: #9488b4;
+}
+
+.ratingNr {
+    color: goldenrod;
+}
+
+
+/* END, Filmdetail page*/
+
+/* START, Pop Ups*/
+
+
+.reviewPop{
+    display: none;
+    position: absolute;
+    width: 300px;
+    height: auto;
+    background-color: #352F44;
+    /* opacity: 1; */
+    z-index: 1;
+    box-shadow: 5px 5px 3px rgba(0,0,0,0.2);
+}
+
+
+/* END, Pop Ups */
+/* etc etc*/
+
+/* START, SearchPage*/
+#userGenreHit {
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
+}
+/* END, SearchPage*/
