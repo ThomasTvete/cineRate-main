@@ -1,6 +1,6 @@
 const model = {
   app: {
-    user: { id: 1, name: "Ellie", interests: [] },
+    user: { id: null, name: null, interests: [] },
     page: "home",
   },
   input: {
@@ -23,6 +23,8 @@ const model = {
     },
 
     movieAmount: 10,
+
+    sortBy: "avgRating",
 
     signUpPage: {
       userName: null,

@@ -7,7 +7,7 @@ function loadPage(){
 function updateView() {
     let page = model.app.page;
     
-    if (page === 'home') updateViewHome();
+    if (page === 'home') updateViewHome('avgRating');
     else if (page === 'search') updateSearchView();
     else if (page === 'userProfile') updateProfileView();
     else if (page === 'filmDetails') updateFilmDetailView();
@@ -40,12 +40,12 @@ function todaysDate(){
     return today;
 }
 
-function sortArrayByInput(input) {
-    console.log(input);
+function sortArrayByInput() {
+    let input = model.input.sortBy;
+    console.log("input:",input);
     sortedArray = model.data.movies.slice().sort(
         (a, b) => (a[input] < b[input]) ? 1 : (a[input] > b[input]) ? -1 : 0
     );
-    console.log(sortedArray);
 }
 
 function updateRating(){

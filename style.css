@@ -327,6 +327,25 @@ input[type="text"]:focus {
     box-shadow: 5px 5px 3px rgba(0,0,0,0.2);
 }
 
+.login {
+    position: fixed;
+  
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background-color: rgba(108, 106, 106, 0.9);
+  }
+.signin {
+    position: fixed;
+  
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background-color: rgba(108, 106, 106, 0.9);
+  }
+
 
 /* END, Pop Ups */
 /* etc etc*/

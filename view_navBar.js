@@ -14,7 +14,7 @@ function navLoggedIn() {
 }
 
 function navLoggedOut() {
-    navBarRight = /*HTML*/`<button id="navButton" onclick="navLoggedIn()">Log In</button>`;
+    navBarRight = /*HTML*/`<button id="navButton" onclick="showAndHideLogin()">Log In</button>`;
     isLoggedIn = false;
     updateNavBar();
 }
@@ -49,6 +49,28 @@ function updateNavBar() {
             <span class="searchIcon"><img src="images/searchIcon.png"/></span>
             <input type='text' placeholder='Search..' id='searchInput' onkeypress="search(this)"/>
        </div>
+    </div>
+    <div class="login hidden">
+    <div class="categories">
+    <h3 class="category-heading">Lag bruker:</h3>
+    <div>
+    <label for="userName">Brukernavn</label>
+    <input id="userName" type="text"/>    
+    </div>
+    <div>
+    <label for="userPassword">Passord</label>
+    <input id="userPassword" type="text"/>    
+    </div>
+
+    <div class="btn-container">
+        <button onclick="showAndHideLogin()" class="btn">Avbryt</button>
+        <button onclick="checkLogin()" class="btn">Logg inn</button>
+    </div>
+    <div class="btn-container">
+        <button onclick="showAndHideLogin()" class="btn">Lag ny bruker</button>
+    </div>
+
+    </div>
     </div>
     `
 }

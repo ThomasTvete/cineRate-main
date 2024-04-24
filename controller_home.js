@@ -1,20 +1,20 @@
 function generateTopMovies() {
-  sortArrayByInput('avgRating');
+  sortArrayByInput();
   for (let i = 0; i < model.input.movieAmount; i++) {
-      const movie = sortedArray[i];
-      movieListHTML += /*HTML*/`
-      <div class="grid-box">
-          <img src="${movie.poster}" width="300" height="445" onclick="viewFilmDetail(${movie.id-1})">
-          <div class="grid-title">${movie.title}</div>
-          <div class="grid-movie-info">
-              <div class="grid-movie-info a">Utgitt: ${movie.releaseYear}</div>
-              <div class="grid-movie-info b">Lengde: ${runtimeInHours(movie.runtimeInMinutes)}</div>
-              <div class="grid-movie-info c">Sjanger: </div>
-              <div class="grid-movie-info d"> ${getGenres(movie)}</div>
-              <div class="grid-movie-info e">Cine-Rating: <span class="ratingNr"> ${movie.avgRating || 0}</span></div>
-          </div>
-      </div>
-      `;
+    const movie = sortedArray[i];
+    movieListHTML += /*HTML*/`
+    <div class="grid-box">
+        <img src="${movie.poster}" width="300" height="445" onclick="viewFilmDetail(${movie.id-1})">
+        <div class="grid-title">${movie.title}</div>
+        <div class="grid-movie-info">
+            <div class="grid-movie-info a">Utgitt: ${movie.releaseYear}</div>
+            <div class="grid-movie-info b">Lengde: ${runtimeInHours(movie.runtimeInMinutes)}</div>
+            <div class="grid-movie-info c">Sjanger: </div>
+            <div class="grid-movie-info d"> ${getGenres(movie)}</div>
+            <div class="grid-movie-info e">Cine-Rating: <span class="ratingNr"> ${movie.avgRating || 0}</span></div>
+        </div>
+    </div>
+    `;
   }
   console.log("Old sorting:");
   console.log(model.data.movies);
@@ -48,4 +48,9 @@ window.onclick = function(event) {
 function changeMovieAmount(ele) {
   model.input.movieAmount = ele;
   updateViewHome();
+}
+
+function newSorting(input){
+  model.input.sortBy = input;
+  updateView();
 }
