@@ -42,7 +42,7 @@ function updateFilmDetailView() {
     <div id="reviewPopUp"></div>
     <div class="reviews">
         <h1 class="headerCard">Anmeldelser</h1>
-        ${createReviewHTML(movie)}
+        <div class="movies_container">${createReviewHTML(movie)}</div>
     </div>
 
     ${createReviewPop()}
@@ -68,20 +68,22 @@ function createReviewHTML(movie){
     for(let review of model.data.reviews){
         if(movie.id === review.filmId){
         reviewHTML += /*HTML*/ `
-        <div class="reviewBox">
-        <span style="padding:5px 10px;color:white; font-size:25px; cursor:pointer;" onclick="viewProfile(${review.user.id}, '${review.user.name}')"> ${review.user.name}</span> så filmen den ${review.createdAt}:
-        <div class="reviewText">
-            ${review.comment}
-        </div>
-        <div style="display: flex"> 
-            Cine-Rating: 
-            <div class="ratingNr">
-                ${review.rating}/1000
-            </div>
-            <div>
-               ${model.app.user.id === review.user.id ? /*HTML*/`<button id="editRevButton${review.id}" onclick="editReview(review)">Forandre anmeldelse</button> ${createReviewPop(review)}` : ''}
-            </div>
+        <div class="movie">
+    <div class="review">
+        <h3 class="heading"onclick="viewProfile(${review.user.id}, '${review.user.name}')"> ${review.user.name}</h3>
+      <div class="rating_date">
+          <div class="rating">${review.rating}</div>
+          <div class="date">${review.createdAt}</div>
+      </div>
+      <p class="film_review">${review.comment}</p>
+
+      ${model.app.user.id === model.input.userPage.id ? ` <div>
+      <button class="edit-delete-btn-review" onclick="editReview()">edit</button>
+      <button class="edit-delete-btn-review" onclick="deleteReview()">delete</button>
+      </div>`:''}
+
     </div>
+  </div>
     `;
         }
     }
