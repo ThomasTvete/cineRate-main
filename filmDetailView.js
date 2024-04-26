@@ -1,7 +1,6 @@
 // updateFilmDetailView();
 
 function updateFilmDetailView() {
-    model.app.page = "filmDetail";
     let index = model.input.filmDetail.movieIndex;
     let movie = model.data.movies[index];
     
@@ -14,7 +13,7 @@ function updateFilmDetailView() {
         </div>
         <div class="movieInfo">
             <div class="rating">
-                Cine-Rating: ${movie.avgRating}
+                Cine-Rating: ${movie.avgRating}/1000
                 <button id="reviewButton" onclick="openRevForm()">Legg til din rating</button>
             </div>
             <p>Utgivelsesår: ${movie.releaseYear}</p>
@@ -77,7 +76,7 @@ function createReviewHTML(movie){
       </div>
       <p class="film_review">${review.comment}</p>
 
-      ${model.app.user.id === model.input.userPage.id ? ` <div>
+      ${model.app.user.id === review.user.id ? ` <div>
       <button class="edit-delete-btn-review" onclick="editReview()">edit</button>
       <button class="edit-delete-btn-review" onclick="deleteReview()">delete</button>
       </div>`:''}

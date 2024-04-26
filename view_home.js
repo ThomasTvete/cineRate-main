@@ -9,7 +9,7 @@ function updateViewHome() {
     
     app.innerHTML = /*HTML*/`
         <div>
-            <span class="h1Home"><h1>Top rangerte filmer</h1><div class="dropDownHTML">${amountDropDownButton}</div></span>
+            <span class="h1Home"><h1>Topprangerte filmer</h1><div class="dropDownHTML">${amountDropDownButton}</div></span>
             
             <div class="grid-container">
             ${movieListHTML}

@@ -1,7 +1,7 @@
 // Not finished and not fully functional.
 let isLoggedIn = false;
 let navBar = document.getElementById("navigationBar");
-let navBarCenter = "Cine-rate"; // Replace with image later
+let navBarCenter = "Cine-Rate"; // Replace with image later
 let navBarRight = null;
 
 function navLoggedIn() {
@@ -11,12 +11,15 @@ function navLoggedIn() {
     `;
     isLoggedIn = true;
     updateNavBar();
+    updateView();
 }
 
 function navLoggedOut() {
     navBarRight = /*HTML*/`<button id="navButton" onclick="showAndHideLogin()">Log In</button>`;
     isLoggedIn = false;
+    model.app.user = { id: null, name: null, interests: [], imageURL: null };
     updateNavBar();
+    updateView();
 }
 
 navCheckLogInState();

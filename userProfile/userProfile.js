@@ -89,7 +89,7 @@ function getReviewsData(userReviews) {
 
     reviewsData += /*HTML*/ `
     <div class="movie">
-    <div class="poster_div"><img class="poster"  src="${moviesDetails[0].poster}" alt="film poster"></div>
+    <div class="poster_div"><img class="poster"  src="${moviesDetails[0].poster}" alt="film poster" onclick="viewFilmDetail(${movieId-1})"></div>
     <div class="review">
       <h3 class="heading">${moviesDetails[0].title}</h3>
       <div class="rating_date">
@@ -123,7 +123,7 @@ function generateUserInfo(name, interests, imgUrl) {
       
     </div>
   </div>
-  <div class="overlay hidden">
+  <div id="userGenres" class="overlay hidden">
   <div class="categories">
   <h3 class="category-heading">Velg Sjanger:</h3>
   <div class="category-checkbox">
@@ -197,7 +197,7 @@ function updateCategories() {
 }
 
 function showAndHideOverlay() {
-  const overlay = document.querySelector(".overlay");
+  const overlay = document.querySelector("#userGenres");
   overlay.classList.toggle("hidden");
 }
 

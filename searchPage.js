@@ -9,6 +9,7 @@ function updateViewSearchResult() { //func to push suggested movies into an arra
     let filteredMovies = []; //array for corresponding movies
     let filteredUsers = [];
     let filteredGenres = [];
+    let filteredCastCrew = [];
 
     for (let i = 0; i < movies.length; i++) {//loops through "movies" to find corresponding letters/titles
         if (movies[i].title.toLowerCase().includes(searchInput)) {
@@ -17,17 +18,29 @@ function updateViewSearchResult() { //func to push suggested movies into an arra
     }
 
     for (let user of model.data.users) {
-        if (user.name.toLowerCase().includes(searchInput)) filteredUsers.push(user);
+        if (user.name.toLowerCase().includes(searchInput)) {
+            filteredUsers.push(user);
+        }
     }
 
     for (let genre of model.data.genres) {
         if (genre.name.toLowerCase().includes(searchInput)
-            || genre.engName.toLowerCase().includes(searchInput)) filteredGenres.push(genre);
+            || genre.engName.toLowerCase().includes(searchInput)) {
+            filteredGenres.push(genre);
+        }
     };
-    displaySuggestions(filteredMovies, filteredUsers, filteredGenres);//end of func starts display func (for suggested movies)
+
+    for (let movie of model.data.movies) {
+        if (movie.director.toLowerCase().includes(searchInput)
+            || movie.writers.toString().toLowerCase().includes(searchInput)
+            || movie.actors.toString().toLowerCase().includes(searchInput)) {
+            filteredCastCrew.push(movie);
+        }
+    }
+    displaySuggestions(filteredMovies, filteredUsers, filteredGenres, filteredCastCrew);//end of func starts display func (for suggested movies)
 };
 
-function displaySuggestions(filteredMovies, filteredUsers, filteredGenres) { //filteredmovies as arg
+function displaySuggestions(filteredMovies, filteredUsers, filteredGenres, filteredCastCrew) { //filteredmovies as arg
     let suggestions = document.getElementById('app');
     console.log(filteredUsers);
 
@@ -65,6 +78,15 @@ function displaySuggestions(filteredMovies, filteredUsers, filteredGenres) { //f
     suggestions.innerHTML += /*HTML*/`
     <h1 class="headerCard">Treff i filmens sjanger</h1>
     <div id="userGenreHit" class="grid-container">${genreHitsHtml}</div>
+    `;
+
+    let castCrewHitsHtml = '';
+    for (let movie of filteredCastCrew) {
+        castCrewHitsHtml += movieListItem(movie);
+    }
+    suggestions.innerHTML += /*HTML*/`
+    <h1 class="headerCard">Treff i cast og crew</h1>
+    <div id="userGenreHit" class="grid-container">${castCrewHitsHtml}</div>
     `;
 
     //page === 'filmDetails') updateFilmDetailView()

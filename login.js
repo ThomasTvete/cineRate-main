@@ -1,6 +1,6 @@
 function generateLogin() {
     return /*HTML*/ `
-    <div class="login hidden">
+    <div id="login" class="overlay hidden">
     <div class="categories">
     <h3 class="category-heading">Logg inn:</h3>
     <div>
@@ -33,7 +33,7 @@ function generateSignup() {
     > &nbsp;${genre.name}</label><br>`;
     }
     return /*HTML*/ `
-    <div class="signup hidden">
+    <div id="signup" class="overlay hidden">
     <div class="categories">
     <h3 class="category-heading">Lag bruker:</h3>
     <div>
@@ -45,7 +45,7 @@ function generateSignup() {
     <input id="userPasswordSignup" type="text"/>    
     </div>
 
-    <h3 class="category-heading">Velg Sjanger:</h3>
+    <h3 class="category-heading">Velg sjangerinteresser:</h3>
   <div class="category-checkbox">
   ${categoriesHtml}
   </div>
@@ -69,7 +69,11 @@ function generateSignup() {
 }
 
 function showAndHideLogin() {
-    const overlay = document.querySelector(".login");
+    const overlay = document.querySelector("#login");
+    overlay.classList.toggle("hidden");
+}
+function showAndHideSignup() {
+    const overlay = document.querySelector("#signup");
     overlay.classList.toggle("hidden");
 }
 function toggleLoginSignup() {
@@ -77,10 +81,6 @@ function toggleLoginSignup() {
     showAndHideSignup();
 }
 
-function showAndHideSignup() {
-    const overlay = document.querySelector(".signup");
-    overlay.classList.toggle("hidden");
-}
 
 function createUser() {
     let name = document.getElementById('userNameSignup').value;

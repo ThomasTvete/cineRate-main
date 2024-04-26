@@ -1,6 +1,6 @@
 const model = {
   app: {
-    user: { id: null, name: null, interests: [] },
+    user: { id: null, name: null, interests: [], imageURL: null },
     page: "home",
   },
   input: {
