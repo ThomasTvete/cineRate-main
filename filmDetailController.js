@@ -14,7 +14,7 @@ function publishReview(){
         id: model.data.reviews.length + 1,
         rating: score,
         comment: `${comment}`,
-        createdAt: `${todaysDate()}`,
+        createdAt: new Date(),
         user: {id: model.app.user.id, name: model.app.user.name},
         filmId: movie.id,
 

@@ -3,6 +3,8 @@ console.log(getUser());
 let interestsArrObj = null;
 let interestsArrStr = null;
 let newCategoryArr = null;
+let editReviewData = null;
+let editReviewIndex = null;
 
 // userProfile();
 
@@ -15,7 +17,9 @@ let newCategoryArr = null;
 // }
 
 function getUser() {
-  return model.data.users.filter((user) => user.name === model.input.userPage.name);
+  return model.data.users.filter(
+    (user) => user.name === model.input.userPage.name
+  );
 }
 
 function getUserInterestsCategoryNum() {
@@ -36,9 +40,9 @@ function updateProfileView() {
   console.log(model.input.userPage);
   userArray = getUser();
   console.log(userArray);
-interestsArrObj = getUserInterestsCategoryNum();
-interestsArrStr = mappingNumCategoriesWithString();
-newCategoryArr = copyStringCategory();
+  interestsArrObj = getUserInterestsCategoryNum();
+  interestsArrStr = mappingNumCategoriesWithString();
+  newCategoryArr = copyStringCategory();
   const root = document.querySelector("#app");
   const userObj = userArray[0];
   console.log(userObj);
@@ -57,12 +61,17 @@ newCategoryArr = copyStringCategory();
   );
   console.log(userReviews);
 
-  const userProfileInfo = generateUserInfo(userName, interestsArr,imageUrl);
+  const userProfileInfo = generateUserInfo(userName, interestsArr, imageUrl);
   root.innerHTML = `<div class="profile">${userProfileInfo}</div>
   <h1 class="reviews-heading">Anmeldelser:</h1>
-  <div class="movies_container">${getReviewsData(userReviews)}</div>`;
+  <div class="movies_container">${getReviewsData(userReviews)}</div>
+  <div class="overlay-review hidden">
+  ${generateEditReview()}
+  </div>
+  `;
 }
 
+//////////////////////////
 function getInterests(arr) {
   let interests = [];
   for (let ele of arr) {
@@ -77,11 +86,13 @@ function getInterests(arr) {
 
 function getReviewsData(userReviews) {
   let reviewsData = "";
+
   for (let review of userReviews) {
     let movieId = review.filmId;
     let userReview = review.comment;
     let rating = review.rating;
     let createdAt = review.createdAt;
+    let reviewID = review.id;
     const moviesDetails = model.data.movies.filter(
       (movie) => movie.id === movieId
     );
@@ -89,19 +100,25 @@ function getReviewsData(userReviews) {
 
     reviewsData += /*HTML*/ `
     <div class="movie">
-    <div class="poster_div"><img class="poster"  src="${moviesDetails[0].poster}" alt="film poster" onclick="viewFilmDetail(${movieId-1})"></div>
+    <div class="poster_div"><img class="poster"  src="${
+      moviesDetails[0].poster
+    }" alt="film poster" onclick="viewFilmDetail(${movieId-1})"></div>
     <div class="review">
       <h3 class="heading">${moviesDetails[0].title}</h3>
       <div class="rating_date">
           <div class="rating">${rating}</div>
-          <div class="date">${createdAt}</div>
+          <div class="date">${createdAt.toLocaleDateString()}</div>
       </div>
       <p class="film_review">${userReview}</p>
 
-      ${model.app.user.id === model.input.userPage.id ? ` <div>
-      <button class="edit-delete-btn-review" onclick="editReview()">edit</button>
-      <button class="edit-delete-btn-review" onclick="deleteReview()">delete</button>
-      </div>`:''}
+      ${
+        model.app.user.id === model.input.userPage.id
+          ? ` <div>
+      <button class="edit-delete-btn-review" onclick="edit_Review(${reviewID})">edit</button>
+      <button class="edit-delete-btn-review" onclick="deleteReview(${reviewID})">delete</button>
+      </div>`
+          : ""
+      }
 
     </div>
   </div>
@@ -119,11 +136,15 @@ function generateUserInfo(name, interests, imgUrl) {
       <p class="category"><span class="info-category">Likte sjangere: </span>${
         interests.sort().join(", ") || "ingen"
       }</p>
-      ${model.app.user.id === model.input.userPage.id ? `<button onclick="updateCategories()" class="edit">Redigere sjangere ✍🏻</button>`:''}
+      ${
+        model.app.user.id === model.input.userPage.id
+          ? `<button onclick="updateCategories()" class="edit">Redigere sjangere ✍🏻</button>`
+          : ""
+      }
       
     </div>
   </div>
-  <div id="userGenres" class="overlay hidden">
+  <div id="genreChoices" class="overlay hidden">
   <div class="categories">
   <h3 class="category-heading">Velg Sjanger:</h3>
   <div class="category-checkbox">
@@ -137,6 +158,7 @@ function generateUserInfo(name, interests, imgUrl) {
 
   </div>
   </div>
+
   `;
 }
 
@@ -197,7 +219,7 @@ function updateCategories() {
 }
 
 function showAndHideOverlay() {
-  const overlay = document.querySelector("#userGenres");
+  const overlay = document.querySelector("#genreChoices");
   overlay.classList.toggle("hidden");
 }
 
@@ -212,3 +234,87 @@ function unselectNewCategories() {
   updateProfileView();
 }
 
+function edit_Review(reviewID) {
+  toggleEditContainer();
+  console.log("review :", reviewID);
+
+  let reviewToDelete = model.data.reviews.filter(
+    (review) => review.id === reviewID
+  );
+  console.log("delete: ", reviewToDelete);
+  const index = model.data.reviews.indexOf(reviewToDelete[0]);
+  editReviewIndex = index;
+  console.log("editReviewIndex : ", editReviewIndex);
+  editReviewData = copyReviewData(index);
+  console.log("editReviewData : ", editReviewData);
+  updateView();
+  toggleEditContainer();
+}
+
+function toggleEditContainer() {
+  const overlayReview = document.querySelector(".overlay-review");
+  overlayReview.classList.toggle("hidden");
+}
+function copyReviewData(index) {
+  let reviewDataToEdit = model.data.reviews[index];
+  console.log(reviewDataToEdit);
+  return JSON.parse(JSON.stringify(reviewDataToEdit));
+}
+
+function deleteReview(reviewID) {
+  console.log("review :", reviewID);
+  let reviewToDelete = model.data.reviews.filter(
+    (review) => review.id === reviewID
+  );
+  console.log("delete: ", reviewToDelete);
+  const index = model.data.reviews.indexOf(reviewToDelete[0]);
+  model.data.reviews.splice(index, 1);
+  saveLocalReviews();
+  updateRating();
+  updateView();
+}
+
+function generateEditReview() {
+  console.log("data in generateEditReview : ", editReviewData);
+  let rating = editReviewData?.rating;
+  let comment = editReviewData?.comment;
+  console.log(rating, " - > ", comment);
+
+  return /*HTML*/ `
+  <div class="edit-review-container">
+  <div class="edit-container">
+  <label>Rating:</label><input oninput="checkValue(this); editReviewData.rating=Number(this.value)"  class="input-rating" type="number" placeholder="mellom 0-1000" value="${
+    rating || 0
+  }"/>
+
+  <label >Comment:</label><textarea oninput="editReviewData.comment = this.value" class="input-rating input-comment" rows="10" cols="50">${
+    comment || ""
+  }</textarea>
+
+ <div> 
+      <button onclick="cancelUpdateReview()" class="btn">Avbryt</button>
+      <button onclick="updateReview()" class="btn">Godkjent</button>
+ </div>
+</div>
+</div>
+  `;
+}
+
+function cancelUpdateReview() {
+  toggleEditContainer();
+}
+
+function updateReview() {
+  let dateTime = new Date();
+  // let day = `${dateTime.getDate() + 1}`.padStart(2, 0);
+  // let month = `${dateTime.getMonth() + 1}`.padStart(2, 0);
+  // let year = dateTime.getFullYear();
+  // let createdAt = `${day}/${month}/${year}`;
+
+  editReviewData = { ...editReviewData, createdAt :dateTime};
+  model.data.reviews[editReviewIndex] = editReviewData;
+  toggleEditContainer();
+  saveLocalReviews();
+  updateRating();
+  updateView();
+}

@@ -24,18 +24,7 @@ function updateFilmDetailView() {
             <div class="movieDescription">
                 ${movie.plotNor}
             </div>
-            <div class ="director">
-                <h3>Regissør</h3>
-                ${movie.director}
-            </div>
-            <div class="screenwriters">
-                <h3>Manusforfattere</h3>
-                ${movie.writers.join('</br>')}
-            </div>
-            <div class="actors">
-                <h3>Skuespillere</h3>
-                ${movie.actors.join('</br>')}
-            </div>
+            ${createCastCrewHTML(movie)};
         </div>
     </div>
     <div id="reviewPopUp"></div>
@@ -44,7 +33,10 @@ function updateFilmDetailView() {
         <div class="movies_container">${createReviewHTML(movie)}</div>
     </div>
 
-    ${createReviewPop()}
+    ${createReviewPop()};
+    <div class="overlay-review hidden">
+  ${generateEditReview()}
+  </div>
 
     `;
 }
@@ -58,6 +50,34 @@ function checkValue(ele){
     }
 }
 
+function createCastCrewHTML(movie){
+    let directorHTML = /*HTML*/ `
+    <div onclick="linkSearch('${movie.director}')">${movie.director}</div>
+    `;
+    let writersHTML = '';
+    for(let writer of movie.writers) writersHTML +=/*HTML*/ `
+    <div onclick="linkSearch('${writer}')">${writer}</div>
+    `;
+    let actorsHTML = '';
+    for(let actor of movie.actors) actorsHTML +=/*HTML*/ `
+    <div onclick="linkSearch('${actor}')">${actor}</div>
+    `;
+    return /*HTML*/ `
+            <div class ="director">
+                <h3>Regissør</h3>
+                ${directorHTML}
+            </div>
+            <div class="screenwriters">
+                <h3>Manusforfattere</h3>
+                ${writersHTML}
+            </div>
+            <div class="actors">
+                <h3>Skuespillere</h3>
+                ${actorsHTML}
+            </div>
+    `;
+}
+
 
 
 
@@ -65,6 +85,7 @@ function checkValue(ele){
 function createReviewHTML(movie){
     let reviewHTML = '';
     for(let review of model.data.reviews){
+        let date = review.createdAt
         if(movie.id === review.filmId){
         reviewHTML += /*HTML*/ `
         <div class="movie">
@@ -72,13 +93,13 @@ function createReviewHTML(movie){
         <h3 class="heading"onclick="viewProfile(${review.user.id}, '${review.user.name}')"> ${review.user.name}</h3>
       <div class="rating_date">
           <div class="rating">${review.rating}</div>
-          <div class="date">${review.createdAt}</div>
+          <div class="date">${review.createdAt.toLocaleDateString()}</div>
       </div>
       <p class="film_review">${review.comment}</p>
 
       ${model.app.user.id === review.user.id ? ` <div>
-      <button class="edit-delete-btn-review" onclick="editReview()">edit</button>
-      <button class="edit-delete-btn-review" onclick="deleteReview()">delete</button>
+      <button class="edit-delete-btn-review" onclick="edit_Review(${review.id})">edit</button>
+      <button class="edit-delete-btn-review" onclick="deleteReview(${review.id})">delete</button>
       </div>`:''}
 
     </div>
@@ -88,6 +109,10 @@ function createReviewHTML(movie){
     }
     return reviewHTML;
 }
+
+// function getDate(time){
+//     return time.toLocaleDateString();
+// }
 
 function createReviewPop(review){
     let rating = review === undefined ? '' : review.rating;

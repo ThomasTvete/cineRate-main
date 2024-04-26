@@ -8,19 +8,33 @@ function updateView() {
     let page = model.app.page;
     
     if (page === 'home') updateViewHome('avgRating');
-    else if (page === 'search') updateSearchView();
+    else if (page === 'search') updateViewSearchResult();
     else if (page === 'userProfile') updateProfileView();
     else if (page === 'filmDetails') updateFilmDetailView();
 }
 
+// function getGenres(movie){
+//     const genres = [];
+//     for (let movieGenre of movie.genreIds){
+//         for(let genre of model.data.genres){
+//             if(movieGenre === genre.id) genres.push(genre.name)
+//         }
+//     }
+//     return genres.join(', ');
+// }
+
 function getGenres(movie){
-    const genres = [];
+    let genresHTML = '';
     for (let movieGenre of movie.genreIds){
         for(let genre of model.data.genres){
-            if(movieGenre === genre.id) genres.push(genre.name)
+            if(movieGenre === genre.id) {
+                genresHTML += /*HTML*/ `
+                <span onclick="linkSearch('${genre.name}')">${genre.name} &nbsp</span>
+                `;
+            }
         }
     }
-    return genres.join(', ');
+    return genresHTML;
 }
 
 function runtimeInHours(runtime){
@@ -65,9 +79,8 @@ function updateRating(){
     }
 }
 
-function editReview(review){
-    console.log(review);
-    console.log(`reviewForm${review.id}`);
-    console.log("reviewForm[review.id]");
-    openRevForm(review);
-}
+function linkSearch(word){
+            model.input.searchBar = word.toLowerCase();
+            model.app.page = 'search';
+            updateView();
+        }

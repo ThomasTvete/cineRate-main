@@ -57,7 +57,7 @@ const model = {
         id: 1,
         rating: 834,
         comment: "Kul film, likte den delen hvor det regnet",
-        createdAt: "05/04/2024",
+        createdAt: new Date('Apr 26 2024'),
         user: { id: 1, name: "Ellie" },
         filmId: 1,
         // watchedFormat: "", //blu-ray, netflix, viaplay, piratebay(??) osv
@@ -66,16 +66,16 @@ const model = {
         id: 6,
         rating: 434,
         comment: "Kul film, likte den delen hvor det regnet",
-        createdAt: "05/04/2024",
+        createdAt: new Date('Apr 19 2024'),
         user: { id: 2, name: "Terje" },
-        filmId: 1,
+        filmId: 10,
         // watchedFormat: "", //blu-ray, netflix, viaplay, piratebay(??) osv
       },
       {
         id: 7,
         rating: 534,
         comment: "Kul film, likte den delen hvor det regnet",
-        createdAt: "05/04/2024",
+        createdAt: new Date('Apr 22 2024'),
         user: { id: 3, name: "Martin" },
         filmId: 1,
         // watchedFormat: "", //blu-ray, netflix, viaplay, piratebay(??) osv
@@ -84,7 +84,7 @@ const model = {
         id: 8,
         rating: 777,
         comment: "Kul film, likte den delen hvor det regnet",
-        createdAt: "05/04/2024",
+        createdAt: new Date('Apr 11 2024'),
         user: { id: 1, name: "Ellie" },
         filmId: 1,
         // watchedFormat: "", //blu-ray, netflix, viaplay, piratebay(??) osv
@@ -93,7 +93,7 @@ const model = {
         id: 2,
         rating: 911,
         comment: "Kul film 👍",
-        createdAt: "06/04/2024",
+        createdAt: new Date('Apr 18 2024'),
         user: { id: 1, name: "Ellie" },
         filmId: 2,
         // watchedFormat: "", //blu-ray, netflix, viaplay, piratebay(??) osv
@@ -102,7 +102,7 @@ const model = {
         id: 3,
         rating: 801,
         comment: "Kul film 👍",
-        createdAt: "10/04/2024",
+        createdAt: new Date('Apr 23 2024'),
         user: { id: 1, name: "Ellie" },
         filmId: 5,
         // watchedFormat: "", //blu-ray, netflix, viaplay, piratebay(??) osv
@@ -111,7 +111,7 @@ const model = {
         id: 4,
         rating: 971,
         comment: "Kul film 👍",
-        createdAt: "11/04/2024",
+        createdAt: new Date('Apr 16 2024'),
         user: { id: 1, name: "Ellie" },
         filmId: 6,
         // watchedFormat: "", //blu-ray, netflix, viaplay, piratebay(??) osv
@@ -120,7 +120,7 @@ const model = {
         id: 5,
         rating: 891,
         comment: "Kul film 👍",
-        createdAt: "12/04/2024",
+        createdAt: new Date('Apr 22 2024'),
         user: { id: 1, name: "Ellie" },
         filmId: 7,
         // watchedFormat: "", //blu-ray, netflix, viaplay, piratebay(??) osv

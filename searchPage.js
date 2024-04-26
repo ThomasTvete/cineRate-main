@@ -4,7 +4,7 @@ let movies = model.data.movies;
 function updateViewSearchResult() { //func to push suggested movies into an array
 
     model.app.page = 'search'
-    let searchInput = document.getElementById('searchInput').value.toLowerCase();
+    let searchInput = model.input.searchBar;
 
     let filteredMovies = []; //array for corresponding movies
     let filteredUsers = [];

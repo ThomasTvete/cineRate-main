@@ -60,9 +60,11 @@ function updateNavBar() {
 
 
 
-function search(ele) {
+function search() {
     if(event.keyCode === 13) {
-        updateViewSearchResult(ele)
+        model.input.searchBar = document.getElementById('searchInput').value.toLowerCase();
+        model.app.page = 'search';
+        updateView();
         document.getElementById("searchInput").value = "";
     }
 }
