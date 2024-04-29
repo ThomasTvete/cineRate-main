@@ -26,6 +26,11 @@ const model = {
 
     sortBy: "avgRating",
 
+    sortReview: {
+      by: "createdAt",
+      tempArray: [],
+    },
+
     signUpPage: {
       userName: null,
       password: null,

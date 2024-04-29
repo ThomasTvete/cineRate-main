@@ -84,3 +84,16 @@ function linkSearch(word){
             model.app.page = 'search';
             updateView();
         }
+
+function reviewSort(input){
+  model.input.sortReview.by = input;
+  updateView();
+}
+
+function sortReviews() {
+    let sortOrder = model.input.sortReview.by;
+    console.log("input:",sortOrder);
+    model.input.sortReview.tempArray = model.data.reviews.slice().sort(
+        (a, b) => (a[sortOrder] < b[sortOrder]) ? 1 : (a[sortOrder] > b[sortOrder]) ? -1 : 0
+    );
+}

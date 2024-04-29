@@ -55,15 +55,21 @@ function updateProfileView() {
   console.log("interests : ", interestsIds);
   const interestsArr = getInterests(interestsIds);
   console.log("Interests : ", interestsArr.join(", "));
+  sortReviews();
 
-  const userReviews = model.data.reviews.filter(
+  const userReviews = model.input.sortReview.tempArray.filter(
     (review) => review.user.id === id
   );
   console.log(userReviews);
 
   const userProfileInfo = generateUserInfo(userName, interestsArr, imageUrl);
   root.innerHTML = `<div class="profile">${userProfileInfo}</div>
-  <h1 class="reviews-heading">Anmeldelser:</h1>
+  <h1 class="reviews-heading">Anmeldelser: <div class="dropdown">
+            <button class="dropButton">Sorter etter 🔽</button>
+            <div class="dropContent">
+            <div onclick='reviewSort("createdAt")'>Tid</div>
+            <div onclick='reviewSort("rating")'>Rating</div>
+        </div></h1>
   <div class="movies_container">${getReviewsData(userReviews)}</div>
   <div class="overlay-review hidden">
   ${generateEditReview()}
@@ -93,6 +99,12 @@ function getReviewsData(userReviews) {
     let rating = review.rating;
     let createdAt = review.createdAt;
     let reviewID = review.id;
+    let userID = review.user.id;
+    console.log("userID : ",userID);
+    let userURL = model.data.users.filter(u=>{ if(u.id === userID)
+    return u.imageURL});
+    console.log("image url : ", userURL[0].imageURL);
+
     const moviesDetails = model.data.movies.filter(
       (movie) => movie.id === movieId
     );
@@ -104,11 +116,11 @@ function getReviewsData(userReviews) {
       moviesDetails[0].poster
     }" alt="film poster" onclick="viewFilmDetail(${movieId-1})"></div>
     <div class="review">
-      <h3 class="heading">${moviesDetails[0].title}</h3>
-      <div class="rating_date">
-          <div class="rating">${rating}</div>
-          <div class="date">${createdAt.toLocaleDateString()}</div>
-      </div>
+            <h3 class="heading">${moviesDetails[0].title}</h3>
+            <div class="rating_date">
+                <div class="rating">${rating}</div>
+                <div class="date">${createdAt.toLocaleDateString()}</div>
+            </div>
       <p class="film_review">${userReview}</p>
 
       ${
@@ -236,7 +248,8 @@ function unselectNewCategories() {
 
 function edit_Review(reviewID) {
   toggleEditContainer();
-  console.log("review :", reviewID);
+  // updateView();
+    console.log("review :", reviewID);
 
   let reviewToDelete = model.data.reviews.filter(
     (review) => review.id === reviewID
@@ -247,9 +260,20 @@ function edit_Review(reviewID) {
   console.log("editReviewIndex : ", editReviewIndex);
   editReviewData = copyReviewData(index);
   console.log("editReviewData : ", editReviewData);
+  
   updateView();
   toggleEditContainer();
 }
+
+function rateMovie(){
+  toggleEditContainer();
+  updateView();
+  toggleEditContainer();
+}
+
+
+
+
 
 function toggleEditContainer() {
   const overlayReview = document.querySelector(".overlay-review");
@@ -274,26 +298,41 @@ function deleteReview(reviewID) {
   updateView();
 }
 
+function checkUserRev(){
+  let index = model.input.filmDetail.movieIndex;
+  let movie = model.data.movies[index];
+  let userID = model.app.user.id;
+
+  for(let review of model.data.reviews){
+    if(review.filmId === movie.id && review.user.id === userID) return review;
+  }
+  return false;
+
+}
+
 function generateEditReview() {
   console.log("data in generateEditReview : ", editReviewData);
   let rating = editReviewData?.rating;
   let comment = editReviewData?.comment;
   console.log(rating, " - > ", comment);
+  let hasRated = checkUserRev();
+  console.log(hasRated);
+  let buttonHTML = hasRated === false ? `<button onclick="publishReview()" class="btn">Godkjent</button>` : '<button onclick="updateReview()" class="btn">Godkjent</button>';
 
   return /*HTML*/ `
   <div class="edit-review-container">
   <div class="edit-container">
-  <label>Rating:</label><input oninput="checkValue(this); editReviewData.rating=Number(this.value)"  class="input-rating" type="number" placeholder="mellom 0-1000" value="${
+  <label>Rating:</label><input id="userScore" oninput="checkValue(this); editReviewData.rating=Number(this.value)"  class="input-rating" type="number" placeholder="mellom 0-1000" value="${
     rating || 0
   }"/>
 
-  <label >Comment:</label><textarea oninput="editReviewData.comment = this.value" class="input-rating input-comment" rows="10" cols="50">${
+  <label >Comment:</label><textarea id="userComment" oninput="editReviewData.comment = this.value" class="input-rating input-comment" rows="10" cols="50">${
     comment || ""
   }</textarea>
 
  <div> 
       <button onclick="cancelUpdateReview()" class="btn">Avbryt</button>
-      <button onclick="updateReview()" class="btn">Godkjent</button>
+      ${buttonHTML}
  </div>
 </div>
 </div>
@@ -313,6 +352,7 @@ function updateReview() {
 
   editReviewData = { ...editReviewData, createdAt :dateTime};
   model.data.reviews[editReviewIndex] = editReviewData;
+
   toggleEditContainer();
   saveLocalReviews();
   updateRating();

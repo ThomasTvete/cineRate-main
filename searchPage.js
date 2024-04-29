@@ -58,7 +58,19 @@ function displaySuggestions(filteredMovies, filteredUsers, filteredGenres, filte
     for (let user of filteredUsers) {
         console.log(user.name);
         userHitsHtml += /*HTML*/`
-        <li onclick="viewProfile(${user.id}, '${user.name}')">${user.name}</li>
+        <div class="movie">
+                <div>
+                <img style="border-radius:50%; width:80px" src="${user.imageURL}" >
+                </div>
+      
+
+                <div class="review">
+                
+                    <h3 class="heading"onclick="viewProfile(${user.id}, '${user.name}')"> ${user.name}</h3>
+                
+                
+                </div>
+         </div>
         `;
     }
     console.log(userHitsHtml);

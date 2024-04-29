@@ -7,7 +7,7 @@ function viewFilmDetail(index){
 function publishReview(){
     let index = model.input.filmDetail.movieIndex;
     let movie = model.data.movies[index];
-    let comment =document.getElementById('userComment').value;
+    let comment = document.getElementById('userComment').value;
     let score = Number(document.getElementById('userScore').value);
 
     const review = {
@@ -27,6 +27,14 @@ function publishReview(){
 
 
 function openRevForm(review){
+   
+    if(model.app.user.id===null){
+        console.log("loginnn");
+        document.getElementById("reviewButton").innerHTML = "Login first to continue";
+        document.getElementById("reviewButton").style.width="150px";
+        showAndHideLogin();
+        return;
+    }
     let reviewForm = review === undefined ? 
     document.getElementById("reviewForm") :
     document.getElementById(`reviewForm${review.id}`)
