@@ -96,7 +96,7 @@ function createUser() {
         id: model.data.users.length + 1,
         name: `${name}`,
         password: `${password}`,
-        userSince: `${todaysDate()}`,
+        since: new Date(),
         interests: [...chosenGenres],
         imageURL: `${image}`,
 

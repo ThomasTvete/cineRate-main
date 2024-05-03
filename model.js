@@ -57,6 +57,7 @@ const model = {
       { id: 3, name: "Martin", password: "Martin", interests: [2, 6, 10, 11] , imageURL:"https://cdn.jsdelivr.net/gh/alohe/avatars/png/vibrent_7.png"},
 
     ],
+
     reviews: [
       {
         id: 1,
@@ -138,6 +139,81 @@ const model = {
     // movieFormats: [
     //   { imdbID: null, commonFormats: null },
     // ],
+
+    reviewHistory: [
+      {
+        id: 1,
+        rating: 834,
+        comment: "Kul film, likte den delen hvor det regnet",
+        createdAt: new Date('Apr 26 2024'),
+        user: { id: 1, name: "Ellie" },
+        filmId: 1,
+        // watchedFormat: "", //blu-ray, netflix, viaplay, piratebay(??) osv
+      },
+      {
+        id: 6,
+        rating: 434,
+        comment: "Kul film, likte den delen hvor det regnet",
+        createdAt: new Date('Apr 19 2024'),
+        user: { id: 2, name: "Terje" },
+        filmId: 10,
+        // watchedFormat: "", //blu-ray, netflix, viaplay, piratebay(??) osv
+      },
+      {
+        id: 7,
+        rating: 534,
+        comment: "Kul film, likte den delen hvor det regnet",
+        createdAt: new Date('Apr 22 2024'),
+        user: { id: 3, name: "Martin" },
+        filmId: 1,
+        // watchedFormat: "", //blu-ray, netflix, viaplay, piratebay(??) osv
+      },
+      {
+        id: 8,
+        rating: 777,
+        comment: "Kul film, likte den delen hvor det regnet",
+        createdAt: new Date('Apr 11 2024'),
+        user: { id: 1, name: "Ellie" },
+        filmId: 1,
+        // watchedFormat: "", //blu-ray, netflix, viaplay, piratebay(??) osv
+      },
+      {
+        id: 2,
+        rating: 911,
+        comment: "Kul film 👍",
+        createdAt: new Date('Apr 18 2024'),
+        user: { id: 1, name: "Ellie" },
+        filmId: 2,
+        // watchedFormat: "", //blu-ray, netflix, viaplay, piratebay(??) osv
+      },
+      {
+        id: 3,
+        rating: 801,
+        comment: "Kul film 👍",
+        createdAt: new Date('Apr 23 2024'),
+        user: { id: 1, name: "Ellie" },
+        filmId: 5,
+        // watchedFormat: "", //blu-ray, netflix, viaplay, piratebay(??) osv
+      },
+      {
+        id: 4,
+        rating: 971,
+        comment: "Kul film 👍",
+        createdAt: new Date('Apr 16 2024'),
+        user: { id: 1, name: "Ellie" },
+        filmId: 6,
+        // watchedFormat: "", //blu-ray, netflix, viaplay, piratebay(??) osv
+      },
+      {
+        id: 5,
+        rating: 891,
+        comment: "Kul film 👍",
+        createdAt: new Date('Apr 22 2024'),
+        user: { id: 1, name: "Ellie" },
+        filmId: 7,
+        // watchedFormat: "", //blu-ray, netflix, viaplay, piratebay(??) osv
+      },
+    ],
 
     genres: [
       { id: 1, name: "Action", engName: "Action" },
