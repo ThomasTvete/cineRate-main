@@ -286,22 +286,106 @@
     border: 2px solid black;
     padding: 4px;
     border-radius: 7px;
+    justify-content: center;
+    /* align-items: center; */
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+
+  .movieInfo{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* padding-left: 5%; */
+    width:25%
+  }
+
+  .filmDetailPoster{
+    /* width: 25% */
+    /* padding-right: 10% */
+    align-content:center;
+    display: flex;
+    flex-direction: row;
+  }
+
+  .filler{
+    min-width: 10%
+  }
+
+  .cast {
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    flex-wrap: wrap;
+    background-color: #5c5470;
+    padding: 2%;
+    /* border-radius: 25px; */
+  box-shadow: 0px 2px 5px 2px rgb(237, 232, 232);
+    
+    
   }
   
-  .rating {
+  .cineRating {
+    /* width: 25%; */
     background-color: #5c5470;
+    display: flex;
+    flex-direction: column;
+    width: auto;
+  }
+
+  .avgRating {
+    width: 80px;
+    text-align: center;
+    padding: 2px 10px;
+    color: rgb(242, 241, 239);
+    border-radius: 5px;
+    background-color: rgb(182, 146, 4);
+  }
+
+  .movieDescription{
+    text-wrap: wrap;
+    /* align-self: center; */
+    width: 80%;
+    background-color: #5c5470;
+    padding: 2%;
+    /* border-radius: 25px; */
+  box-shadow: 0px 2px 5px 2px rgb(237, 232, 232);
   }
   
   .director {
     background-color: #5c5470;
+    padding-right: 20px;
+    /* padding-left: 20px; */
   }
   
   .screenwriters {
     background-color: #5c5470;
+    padding-right: 20px;
   }
   
   .actors {
     background-color: #5c5470;
+    padding-right: 20px;
+  }
+
+  .filmDetailGenres{
+    padding-bottom: 2%;
+    background-color: #5c5470;
+    width: 80%;
+    padding: 2%;
+    /* border-radius: 25px; */
+  box-shadow: 0px 2px 5px 2px rgb(237, 232, 232);
+  }
+
+  .miscInfo{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #5c5470;
+    width: 80%;
+    padding: 2%;
+    /* border-radius: 25px; */
+  box-shadow: 0px 2px 5px 2px rgb(237, 232, 232);
+
   }
   
   .reviewBox {

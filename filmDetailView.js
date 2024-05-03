@@ -7,56 +7,61 @@ function updateFilmDetailView() {
     console.log("yooo", userReview);
   
     document.getElementById("app").innerHTML = /*HTML*/ `
-      <h1 class="headerCard">${movie.title}</h1>
-      <div class="movieDetails">
-          <div class="filmDetailPoster">
-              <img src=${movie.poster}/>
-          </div>
-          <div class="movieInfo">
-              <div class="rating">
-                  Cine-Rating: ${movie.avgRating}/1000
-  
-  
-                  ${
-                    userReview === false
-                      ? model.app.user.id === null
-                        ? '<button onclick="showAndHideLogin()">Logg inn for å gi rating</button>'
-                        : '<button id="reviewButton" onclick="rateMovie()">Legg til din rating</button>'
-                      : `<div>Din rating: ${userReview.rating}</div>`
-                  }
-                  
-              </div>
-              <p>Utgivelsesår: ${movie.releaseYear}</p>
-              <p>Lengde: ${runtimeInHours(movie.runtimeInMinutes)}</p>
-              <div class="filmDetailGenres">
-                  ${getGenres(movie)}
-              </div>
-              <div class="movieDescription">
-                  ${movie.plotNor}
-              </div>
-              ${createCastCrewHTML(movie)}
-          </div>
-      </div>
-      <div id="reviewPopUp"></div>
-      <div class="reviews">
-          <span  class="headerCard">
-          <h1>Anmeldelser</h1>
-          <div class="dropdown">
-              <button class="dropButton">Sorter etter 🔽</button>
-              <div class="dropContent">
-              <div onclick='reviewSort("createdAt")'>Tid</div>
-              <div onclick='reviewSort("rating")'>Rating</div>
-          </div>
-        </div>
-        </span>
-          <div class="movies_container">${createReviewHTML(movie)}</div>
-      </div>
-  
-      <div class="overlay-review hidden">
-    ${generateEditReview()}
+        <h1 class="headerCard">${movie.title}</h1>
+        <div class="movieDetails">
+            <div class="filmDetailPoster">
+                <img src=${movie.poster}/>
+                <div class="filler"></div>
+            </div>
+            <div class="movieInfo">
+            
+            <div class="movieDescription">
+            <h3>Om filmen</h3>
+                ${movie.plotNor}
+            </div>
+            ${createCastCrewHTML(movie)}
+            <div class="miscInfo">
+                <h3>Info</h3>
+                <div>Utgivelsesår: ${movie.releaseYear}</div>
+                <div>Lengde: ${runtimeInHours(movie.runtimeInMinutes)}</div>
+                <div>Land: ${movie.country}</div>
+                <div>Språk: ${movie.language}</div>
+                </div>
+                <div class="filmDetailGenres">
+                <h3>Sjangre</h3>
+                    ${getGenres(movie)}
+                </div>
+            </div>
+            <div class="cineRating">
+            <h2>Cine-Rating</h2> <div class="avgRating">${movie.avgRating}/1000</div>
+            ${
+            userReview === false
+                ? model.app.user.id === null
+                ? '<button onclick="showAndHideLogin()">Logg inn for å gi rating</button>'
+                : '<button id="reviewButton" onclick="rateMovie()">Legg til din rating</button>'
+                : `<div>Din rating: ${userReview.rating}</div>`
+            }
     </div>
-  
-      `;
+           
+        </div>
+        <div id="reviewPopUp"></div>
+        <div class="reviews">
+            <span  class="headerCard">
+                <h1>Anmeldelser</h1>
+                <div class="dropdown">
+                    <button class="dropButton">Sorter etter 🔽</button>
+                    <div class="dropContent">
+                        <div onclick='reviewSort("createdAt")'>Tid</div>
+                        <div onclick='reviewSort("rating")'>Rating</div>
+                    </div>
+                </div>
+            </span>
+            <div class="movies_container">${createReviewHTML(movie)}</div>
+        </div>
+        <div class="overlay-review hidden">
+            ${generateEditReview()}
+        </div>
+    `;
   }
   
   function checkValue(ele) {
@@ -83,6 +88,7 @@ function updateFilmDetailView() {
       <div onclick="linkSearch('${actor}')">${actor}</div>
       `;
     return /*HTML*/ `
+    <div class="cast">
               <div class ="director">
                   <h3>Regissør</h3>
                   ${directorHTML}
@@ -94,6 +100,7 @@ function updateFilmDetailView() {
               <div class="actors">
                   <h3>Skuespillere</h3>
                   ${actorsHTML}
+              </div>
               </div>
       `;
   }
