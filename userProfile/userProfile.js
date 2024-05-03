@@ -5,7 +5,8 @@ let interestsArrStr = null;
 let newCategoryArr = null;
 let editReviewData = null;
 let editReviewIndex = null;
-
+let userImage = null;
+let newImage = null;
 // userProfile();
 
 // function userProfile() {
@@ -50,6 +51,8 @@ function updateProfileView() {
   const id = userObj.id;
   const imageUrl = userObj.imageURL;
   const interestsIds = userObj.interests;
+  userImage = imageUrl;
+  console.log("imageURL : ", userImage);
   console.log("id : ", id);
   console.log("name : ", userName);
   console.log("interests : ", interestsIds);
@@ -63,8 +66,8 @@ function updateProfileView() {
   console.log(userReviews);
 
   const userProfileInfo = generateUserInfo(userName, interestsArr, imageUrl);
-  root.innerHTML = `<div class="profile">${userProfileInfo}</div>
-  <h1 class="reviews-heading">Anmeldelser: <div class="dropdown">
+  root.innerHTML = /*HTML*/ `<div class="profile">${userProfileInfo}</div>
+  <h1 class="reviews-heading" >Anmeldelser: <div class="dropdown">
             <button class="dropButton">Sorter etter 🔽</button>
             <div class="dropContent">
             <div onclick='reviewSort("createdAt")'>Tid</div>
@@ -100,9 +103,10 @@ function getReviewsData(userReviews) {
     let createdAt = review.createdAt;
     let reviewID = review.id;
     let userID = review.user.id;
-    console.log("userID : ",userID);
-    let userURL = model.data.users.filter(u=>{ if(u.id === userID)
-    return u.imageURL});
+    console.log("userID : ", userID);
+    let userURL = model.data.users.filter((u) => {
+      if (u.id === userID) return u.imageURL;
+    });
     console.log("image url : ", userURL[0].imageURL);
 
     const moviesDetails = model.data.movies.filter(
@@ -114,7 +118,7 @@ function getReviewsData(userReviews) {
     <div class="movie">
     <div class="poster_div"><img class="poster"  src="${
       moviesDetails[0].poster
-    }" alt="film poster" onclick="viewFilmDetail(${movieId-1})"></div>
+    }" alt="film poster" onclick="viewFilmDetail(${movieId - 1})"></div>
     <div class="review">
             <h3 class="heading">${moviesDetails[0].title}</h3>
             <div class="rating_date">
@@ -150,7 +154,7 @@ function generateUserInfo(name, interests, imgUrl) {
       }</p>
       ${
         model.app.user.id === model.input.userPage.id
-          ? `<button onclick="updateCategories()" class="edit">Redigere sjangere ✍🏻</button>`
+          ? `<button onclick="updateCategories()" class="edit">Redigere sjangere ✍🏻</button>&nbsp; <button onclick="updateImage()" class="edit">Endre bildet 🌠</button>`
           : ""
       }
       
@@ -166,6 +170,25 @@ function generateUserInfo(name, interests, imgUrl) {
   <div class="btn-container">
       <button onclick="unselectNewCategories()" class="btn">Avbryt</button>
       <button onclick="updateCategoryArr()" class="btn">Godkjent</button>
+  </div>
+  </div>
+  </div>
+
+
+
+  <div id="imageChoices" class="overlay hidden scroll">
+  <div class="categories">
+  <h3 class="category-heading">Velg Bildet:</h3>
+ 
+  <div >
+      <div class="category-checkbox">
+      ${generateImages()}
+      </div>
+  </div>
+  
+  <div class="btn-container">
+      <button onclick="unselectNewImage()" class="btn">Avbryt</button>
+      <button onclick="updateUserImage()" class="btn">Godkjent</button>
   </div>
 
   </div>
@@ -194,6 +217,16 @@ function generateCategories() {
     
     > &nbsp;${genre.name}</label><br>`;
   }
+  return categoriesHtml;
+}
+function generateImages() {
+  let categoriesHtml = "";
+  for (let image of model.data.images) {
+    categoriesHtml += /*HTML*/ `<div class="user-image"><input id="${image}" onchange="getValue(this)" type="radio"  name="imageSource" value="${image}" class="check-box" 
+    ${image === userImage ? "checked" : ""}>
+     &nbsp;<label for="${image}"  class="label-category" ><img src="${image}" class="user-img"></label></div>`;
+  }
+  console.log("newImage : ", newImage);
   return categoriesHtml;
 }
 
@@ -226,8 +259,31 @@ function updateCategoryArr() {
   updateProfileView();
 }
 
+function updateUserImage() {
+  var ele = document.getElementsByName("imageSource");
+
+  for (i = 0; i < ele.length; i++) {
+    if (ele[i].checked) newImage = ele[i].value;
+  }
+  console.log("newImage : ", newImage);
+  userImage = newImage;
+  ////////
+
+  console.log("userdata : ", userArray);
+  userArray[0].imageURL = newImage;
+  saveLocalUsers();
+  ////////
+  showAndHideOverlay();
+  updateProfileView();
+}
+
 function updateCategories() {
   showAndHideOverlay();
+}
+
+function updateImage() {
+  const overlayImage = document.querySelector("#imageChoices");
+  overlayImage.classList.toggle("hidden");
 }
 
 function showAndHideOverlay() {
@@ -246,10 +302,17 @@ function unselectNewCategories() {
   updateProfileView();
 }
 
+function unselectNewImage() {
+  console.log("avbryt");
+
+  showAndHideOverlay();
+  updateProfileView();
+}
+
 function edit_Review(reviewID) {
   toggleEditContainer();
   // updateView();
-    console.log("review :", reviewID);
+  console.log("review :", reviewID);
 
   let reviewToDelete = model.data.reviews.filter(
     (review) => review.id === reviewID
@@ -260,20 +323,16 @@ function edit_Review(reviewID) {
   console.log("editReviewIndex : ", editReviewIndex);
   editReviewData = copyReviewData(index);
   console.log("editReviewData : ", editReviewData);
-  
+
   updateView();
   toggleEditContainer();
 }
 
-function rateMovie(){
+function rateMovie() {
   toggleEditContainer();
   updateView();
   toggleEditContainer();
 }
-
-
-
-
 
 function toggleEditContainer() {
   const overlayReview = document.querySelector(".overlay-review");
@@ -298,16 +357,15 @@ function deleteReview(reviewID) {
   updateView();
 }
 
-function checkUserRev(){
+function checkUserRev() {
   let index = model.input.filmDetail.movieIndex;
   let movie = model.data.movies[index];
   let userID = model.app.user.id;
 
-  for(let review of model.data.reviews){
-    if(review.filmId === movie.id && review.user.id === userID) return review;
+  for (let review of model.data.reviews) {
+    if (review.filmId === movie.id && review.user.id === userID) return review;
   }
   return false;
-
 }
 
 function generateEditReview() {
@@ -317,7 +375,10 @@ function generateEditReview() {
   console.log(rating, " - > ", comment);
   let hasRated = checkUserRev();
   console.log(hasRated);
-  let buttonHTML = hasRated === false ? `<button onclick="publishReview()" class="btn">Godkjent</button>` : '<button onclick="updateReview()" class="btn">Godkjent</button>';
+  let buttonHTML =
+    hasRated === false
+      ? `<button onclick="publishReview()" class="btn">Godkjent</button>`
+      : '<button onclick="updateReview()" class="btn">Godkjent</button>';
 
   return /*HTML*/ `
   <div class="edit-review-container">
@@ -350,7 +411,7 @@ function updateReview() {
   // let year = dateTime.getFullYear();
   // let createdAt = `${day}/${month}/${year}`;
 
-  editReviewData = { ...editReviewData, createdAt :dateTime};
+  editReviewData = { ...editReviewData, createdAt: dateTime };
   model.data.reviews[editReviewIndex] = editReviewData;
 
   toggleEditContainer();

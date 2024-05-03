@@ -51,6 +51,23 @@ const model = {
 
   },
   data: {
+    images: [
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7VHlvKbesl5zekANDUcJOvfWW-eiCV_kuf1JPwFqja7R4k7rBQ08FbjKlQQ&s",
+      "https://cdn.jsdelivr.net/gh/alohe/avatars/png/vibrent_1.png",
+      "https://cdn.jsdelivr.net/gh/alohe/avatars/png/vibrent_2.png",
+      "https://cdn.jsdelivr.net/gh/alohe/avatars/png/vibrent_3.png",
+      "https://cdn.jsdelivr.net/gh/alohe/avatars/png/vibrent_4.png",
+      "https://cdn.jsdelivr.net/gh/alohe/avatars/png/vibrent_5.png",
+      "https://cdn.jsdelivr.net/gh/alohe/avatars/png/vibrent_6.png",
+      "https://cdn.jsdelivr.net/gh/alohe/avatars/png/vibrent_7.png",
+      "https://cdn.jsdelivr.net/gh/alohe/avatars/png/vibrent_8.png",
+      "https://cdn.jsdelivr.net/gh/alohe/avatars/png/vibrent_9.png",
+      "https://cdn.jsdelivr.net/gh/alohe/avatars/png/vibrent_10.png",
+      "https://cdn.jsdelivr.net/gh/alohe/avatars/png/vibrent_11.png",
+      "https://cdn.jsdelivr.net/gh/alohe/avatars/png/vibrent_12.png",
+      "https://cdn.jsdelivr.net/gh/alohe/avatars/png/vibrent_13.png",
+      "https://cdn.jsdelivr.net/gh/alohe/avatars/png/vibrent_16.png",
+    ],
     users: [
       { id: 1, name: "Ellie", password: "Ellie", interests: [1, 2, 3], imageURL :"https://cdn.jsdelivr.net/gh/alohe/avatars/png/vibrent_1.png" },
       { id: 2, name: "Terje", password: "Terje", interests: [5, 7, 8, 13], imageURL:"https://cdn.jsdelivr.net/gh/alohe/avatars/png/vibrent_16.png" },
