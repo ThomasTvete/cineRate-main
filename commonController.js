@@ -29,7 +29,7 @@ function getGenres(movie){
         for(let genre of model.data.genres){
             if(movieGenre === genre.id) {
                 genresHTML += /*HTML*/ `
-                <span onclick="linkSearch('${genre.name}')">${genre.name} &nbsp</span>
+                <span class="pointer" onclick="linkSearch('${genre.name}')">${genre.name} &nbsp</span>
                 `;
             }
         }
@@ -54,13 +54,6 @@ function todaysDate(){
     return today;
 }
 
-function sortArrayByInput() {
-    let input = model.input.sortBy;
-    console.log("input:",input);
-    sortedArray = model.data.movies.slice().sort(
-        (a, b) => (a[input] < b[input]) ? 1 : (a[input] > b[input]) ? -1 : 0
-    );
-}
 
 function updateRating(){
     for(movie of model.data.movies){

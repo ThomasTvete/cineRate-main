@@ -26,6 +26,8 @@ const model = {
 
     sortBy: "avgRating",
 
+    userFilterMovies: [],
+
     sortReview: {
       by: "createdAt",
       tempArray: [],
@@ -104,15 +106,6 @@ const model = {
         // watchedFormat: "", //blu-ray, netflix, viaplay, piratebay(??) osv
       },
       {
-        id: 8,
-        rating: 777,
-        comment: "Kul film, likte den delen hvor det regnet",
-        createdAt: new Date('Apr 11 2024'),
-        user: { id: 1, name: "Ellie" },
-        filmId: 1,
-        // watchedFormat: "", //blu-ray, netflix, viaplay, piratebay(??) osv
-      },
-      {
         id: 2,
         rating: 911,
         comment: "Kul film 👍",
@@ -182,15 +175,6 @@ const model = {
         comment: "Kul film, likte den delen hvor det regnet",
         createdAt: new Date('Apr 22 2024'),
         user: { id: 3, name: "Martin" },
-        filmId: 1,
-        // watchedFormat: "", //blu-ray, netflix, viaplay, piratebay(??) osv
-      },
-      {
-        id: 8,
-        rating: 777,
-        comment: "Kul film, likte den delen hvor det regnet",
-        createdAt: new Date('Apr 11 2024'),
-        user: { id: 1, name: "Ellie" },
         filmId: 1,
         // watchedFormat: "", //blu-ray, netflix, viaplay, piratebay(??) osv
       },
@@ -4252,11 +4236,46 @@ const model = {
         "plotNor": "Løytnant John Dunbar, tildelt en avsidesliggende vestlig borgerkrigspost, blir venn med ulver og indianere, noe som gjør ham til en intolerabel avvik i militæret.",
         "poster": "https://m.media-amazon.com/images/M/MV5BMTY3OTI5NDczN15BMl5BanBnXkFtZTcwNDA0NDY3Mw@@._V1_SX300.jpg",
         "language": "Engelsk, Sioux, Pawnee",
+        "country": "USA, Storbritannia",
         "writers": ["Michael Blake"],
         "actors": ["Kevin Costner", "Mary McDonnell", "Graham Greene"],
         "genreIds": [2, 3, 9],
         "avgRating": null,
         "id": 250
+      },
+
+      {
+        "title": "Tangled",
+        "releaseYear": 2010,
+        "runtimeInMinutes": 100,
+        "director": "Nathan Greno, Byron Howard",
+        "plot": "The magically long-haired Rapunzel has spent her entire life in a tower, but now that a runaway thief has stumbled upon her, she is about to discover the world for the first time, and who she really is.",
+        "plotNor": "Den magisk langhårede Rapunzel har tilbrakt hele sitt liv i et tårn, men nå som en rømlingstyv har snublet over henne, er hun i ferd med å oppdage verden for første gang, og hvem hun egentlig er.",
+        "poster": "https://m.media-amazon.com/images/M/MV5BMTAxNDYxMjg0MjNeQTJeQWpwZ15BbWU3MDcyNTk2OTM@._V1_SX300.jpg",
+        "language": "Engelsk, Tysk",
+        "country": "USA, Japan",
+        "writers": ["Dan Fogelman, Jacob Grimm, Wilhelm Grimm"],
+        "actors": ["Mandy Moore, Zachary Levi, Donna Murphy"],
+        "genreIds": [2, 6, 15],
+        "avgRating": null,
+        "id": 251
+      },
+
+      {
+        "title": "The Lighthouse",
+        "releaseYear": 2019,
+        "runtimeInMinutes": 109,
+        "director": "Robert Eggers",
+        "plot": "Two lighthouse keepers try to maintain their sanity while living on a remote and mysterious New England island in the 1890s.",
+        "plotNor": "To fyrvoktere prøver å opprettholde forstanden sin mens de bor på en avsidesliggende og mystisk øy utenfor New England på 1890-tallet.",
+        "poster": "https://m.media-amazon.com/images/M/MV5BZmE0MGJhNmYtOWNjYi00Njc5LWE2YjEtMWMxZTVmODUwMmMxXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_SX300.jpg",
+        "language": "Engelsk",
+        "country": "USA, Canada",
+        "writers": ["Robert Eggers, Max Eggers"],
+        "actors": ["Robert Pattinson, Willem Dafoe, Valeriia Karaman"],
+        "genreIds": [3, 5, 7],
+        "avgRating": null,
+        "id": 252
       },
     ],
   },

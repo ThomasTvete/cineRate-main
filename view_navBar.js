@@ -38,7 +38,7 @@ function updateNavBar() {
             <button id="navButton" onclick="goHome()">Home</button>
         </div>
 
-        <div id="navBarCenter">
+        <div id="navBarCenter" onclick="goHome()">
             ${navBarCenter}
         </div>
 

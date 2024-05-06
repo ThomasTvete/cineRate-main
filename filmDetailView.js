@@ -10,8 +10,7 @@ function updateFilmDetailView() {
         <h1 class="headerCard">${movie.title}</h1>
         <div class="movieDetails">
             <div class="filmDetailPoster">
-                <img src=${movie.poster}/>
-                <div class="filler"></div>
+                <img class="posterImg" src=${movie.poster}/>
             </div>
             <div class="movieInfo">
             
@@ -39,7 +38,9 @@ function updateFilmDetailView() {
                 ? model.app.user.id === null
                 ? '<button onclick="showAndHideLogin()">Logg inn for å gi rating</button>'
                 : '<button id="reviewButton" onclick="rateMovie()">Legg til din rating</button>'
-                : `<div>Din rating: ${userReview.rating}</div>`
+                : `<div class="userRating">Din rating: 
+                    <div>${userReview.rating}</div>
+                  </div>`
             }
     </div>
            
@@ -75,17 +76,17 @@ function updateFilmDetailView() {
   
   function createCastCrewHTML(movie) {
     let directorHTML = /*HTML*/ `
-      <div onclick="linkSearch('${movie.director}')">${movie.director}</div>
+      <div class="pointer" onclick="linkSearch('${movie.director}')">${movie.director}</div>
       `;
     let writersHTML = "";
     for (let writer of movie.writers)
       writersHTML += /*HTML*/ `
-      <div onclick="linkSearch('${writer}')">${writer}</div>
+      <div class="pointer" onclick="linkSearch('${writer}')">${writer}</div>
       `;
     let actorsHTML = "";
     for (let actor of movie.actors)
       actorsHTML += /*HTML*/ `
-      <div onclick="linkSearch('${actor}')">${actor}</div>
+      <div class="pointer" onclick="linkSearch('${actor}')">${actor}</div>
       `;
     return /*HTML*/ `
     <div class="cast">
