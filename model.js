@@ -46,7 +46,7 @@ const model = {
     },
 
     userPage: {
-      id: null, 
+      id: null,
       name: null,
     }
 
@@ -71,75 +71,288 @@ const model = {
       "https://cdn.jsdelivr.net/gh/alohe/avatars/png/vibrent_16.png",
     ],
     users: [
-      { id: 1, name: "Ellie", password: "Ellie", interests: [1, 2, 3], imageURL :"https://cdn.jsdelivr.net/gh/alohe/avatars/png/vibrent_1.png" },
-      { id: 2, name: "Terje", password: "Terje", interests: [5, 7, 8, 13], imageURL:"https://cdn.jsdelivr.net/gh/alohe/avatars/png/vibrent_16.png" },
-      { id: 3, name: "Martin", password: "Martin", interests: [2, 6, 10, 11] , imageURL:"https://cdn.jsdelivr.net/gh/alohe/avatars/png/vibrent_7.png"},
+      { "id": 1, "name": "Ellie", "password": "Ellie", "interests": [1, 2, 3], "imageURL": "https://cdn.jsdelivr.net/gh/alohe/avatars/png/vibrent_1.png" },
+      { "id": 2, "name": "Terje", "password": "Terje", "interests": [5, 7, 8, 13], "imageURL": "https://cdn.jsdelivr.net/gh/alohe/avatars/png/vibrent_16.png" },
+      { "id": 3, "name": "Martin", "password": "Martin", "interests": [2, 6, 10, 11], "imageURL": "https://cdn.jsdelivr.net/gh/alohe/avatars/png/vibrent_7.png" },
+      { "id": 4, "name": "WesthamAndEggs", "password": "fotballsuger", "interests": [1, 2, 3], "imageURL": "https://cdn.jsdelivr.net/gh/alohe/avatars/png/vibrent_5.png" },
+      { "id": 5, "name": "Marius", "password": "Marius", "interests": [2, 6, 10, 11], "imageURL": "https://cdn.jsdelivr.net/gh/alohe/avatars/png/vibrent_11.png" },
+      { "id": 6, "name": "ListeFan", "password": "ListeFan", "interests": [8, 11, 16, 17], "imageURL": "https://cdn.jsdelivr.net/gh/alohe/avatars/png/vibrent_10.png" },
+      { "id": 7, "name": "RateMyMeowie", "password": "Katt", "interests": [2, 6, 7, 10, 11, 15, 17, 18], "imageURL": "https://cdn.jsdelivr.net/gh/alohe/avatars/png/vibrent_9.png" },
 
     ],
 
     reviews: [
       {
-        id: 1,
-        rating: 834,
-        comment: "Kul film, likte den delen hvor det regnet",
-        createdAt: new Date('Apr 26 2024'),
-        user: { id: 1, name: "Ellie" },
-        filmId: 1,
-        // watchedFormat: "", //blu-ray, netflix, viaplay, piratebay(??) osv
+        "id": 1,
+        "rating": 834,
+        "comment": "Kul film, likte den delen hvor det regnet",
+        "createdAt": new Date("2024-04-25T22:00:00.000Z"),
+        "user": { "id": 3, "name": "Martin" },
+        "filmId": 1
       },
       {
-        id: 6,
-        rating: 434,
-        comment: "Kul film, likte den delen hvor det regnet",
-        createdAt: new Date('Apr 19 2024'),
-        user: { id: 2, name: "Terje" },
-        filmId: 10,
-        // watchedFormat: "", //blu-ray, netflix, viaplay, piratebay(??) osv
+        "id": 6,
+        "rating": 434,
+        "comment": "Tag urself jeg er The Ugly :(",
+        "createdAt": new Date("2024-04-18T22:00:00.000Z"),
+        "user": { "id": 4, "name": "WesthamAndEggs" },
+        "filmId": 10
       },
       {
-        id: 7,
-        rating: 534,
-        comment: "Kul film, likte den delen hvor det regnet",
-        createdAt: new Date('Apr 22 2024'),
-        user: { id: 3, name: "Martin" },
-        filmId: 1,
-        // watchedFormat: "", //blu-ray, netflix, viaplay, piratebay(??) osv
+        "id": 7,
+        "rating": 113,
+        "comment": "Det er 13 Angry Men etter at jeg så denne dritten",
+        "createdAt": new Date("2024-04-21T22:00:00.000Z"),
+        "user": { "id": 5, "name": "Marius" },
+        "filmId": 5
       },
       {
-        id: 2,
-        rating: 911,
-        comment: "Kul film 👍",
-        createdAt: new Date('Apr 18 2024'),
-        user: { id: 1, name: "Ellie" },
-        filmId: 2,
-        // watchedFormat: "", //blu-ray, netflix, viaplay, piratebay(??) osv
+        "id": 2,
+        "rating": 999,
+        "comment": "Perfeksjon er uoppnåelig, men denne filmen er så nært man kommer",
+        "createdAt": new Date("2024-04-17T22:00:00.000Z"),
+        "user": { "id": 1, "name": "Ellie" },
+        "filmId": 251
       },
       {
-        id: 3,
-        rating: 801,
-        comment: "Kul film 👍",
-        createdAt: new Date('Apr 23 2024'),
-        user: { id: 1, name: "Ellie" },
-        filmId: 5,
-        // watchedFormat: "", //blu-ray, netflix, viaplay, piratebay(??) osv
+        "id": 3,
+        "rating": 801,
+        "comment": "Gullstandaren for rettsdramaer, drevet av sterke rollefigurer og ett dypt innblikk i gruppepsykologi",
+        "createdAt": new Date("2024-04-22T22:00:00.000Z"),
+        "user": { "id": 1, "name": "Ellie" },
+        "filmId": 5
       },
       {
-        id: 4,
-        rating: 971,
-        comment: "Kul film 👍",
-        createdAt: new Date('Apr 16 2024'),
-        user: { id: 1, name: "Ellie" },
-        filmId: 6,
-        // watchedFormat: "", //blu-ray, netflix, viaplay, piratebay(??) osv
+        "id": 4,
+        "rating": 753,
+        "comment": "Elsker lister, men denne listen var litt deprimerende",
+        "createdAt": new Date("2024-04-15T22:00:00.000Z"),
+        "user": { "id": 6, "name": "ListeFan" },
+        "filmId": 6
       },
       {
-        id: 5,
-        rating: 891,
-        comment: "Kul film 👍",
-        createdAt: new Date('Apr 22 2024'),
-        user: { id: 1, name: "Ellie" },
-        filmId: 7,
-        // watchedFormat: "", //blu-ray, netflix, viaplay, piratebay(??) osv
+        "id": 5,
+        "rating": 634,
+        "comment": "Den hadde ærlig talt ett tårn for mye",
+        "createdAt": new Date("2024-04-21T22:00:00.000Z"),
+        "user": { "id": 4, "name": "WesthamAndEggs" },
+        "filmId": 14
+      },
+      {
+        "id": 8,
+        "rating": 950,
+        "comment": "Dette er en skikkelig skjult perle, men som den film-kånnesøren jeg er så er dette min favorittfilm",
+        "createdAt": new Date("2024-05-06T19:19:11.837Z"),
+        "user": { "id": 4, "name": "WesthamAndEggs" },
+        "filmId": 12
+      },
+      {
+        "id": 9,
+        "rating": 835,
+        "comment": "Endelig en skikkelig actionfilm, men minus-poeng på grunn av all snakkinga",
+        "createdAt": new Date("2024-05-06T19:21:44.327Z"),
+        "user": { "id": 4, "name": "WesthamAndEggs" },
+        "filmId": 201
+      },
+      {
+        "id": 10,
+        "rating": 867,
+        "comment": "👍 <- Arnold",
+        "createdAt": new Date("2024-05-06T19:24:59.126Z"),
+        "user": { "id": 4, "name": "WesthamAndEggs" },
+        "filmId": 29
+      },
+      {
+        "id": 11,
+        "rating": 333,
+        "comment": "Hitler-barten er i dårlig smak",
+        "createdAt": new Date("2024-05-06T19:28:55.139Z"),
+        "user": { "id": 4, "name": "WesthamAndEggs" },
+        "filmId": 45
+      },
+      {
+        "id": 12,
+        "rating": 669,
+        "comment": "All prompinga var ganske morsom",
+        "createdAt": new Date("2024-05-06T19:33:14.467Z"),
+        "user": { "id": 4, "name": "WesthamAndEggs" },
+        "filmId": 252
+      },
+      {
+        "id": 13,
+        "rating": 99,
+        "comment": "For mange drømmelag",
+        "createdAt": new Date("2024-05-06T19:37:12.788Z"),
+        "user": { "id": 4, "name": "WesthamAndEggs" },
+        "filmId": 13
+      },
+      {
+        "id": 14,
+        "rating": 100,
+        "comment": "Ville vært bedre om den het Raging Cat",
+        "createdAt": new Date("2024-05-06T19:39:42.001Z"),
+        "user": { "id": 7, "name": "RateMyMeowie" },
+        "filmId": 154
+      },
+      {
+        "id": 15,
+        "rating": 467,
+        "comment": "Var det ikke en katt i boksen????",
+        "createdAt": new Date("2024-05-06T19:40:25.221Z"),
+        "user": { "id": 7, "name": "RateMyMeowie" },
+        "filmId": 19
+      },
+      {
+        "id": 16,
+        "rating": 133,
+        "comment": "TOLV MENN og ikke en ENESTE KATT",
+        "createdAt": new Date("2024-05-06T19:43:53.348Z"),
+        "user": { "id": 7, "name": "RateMyMeowie" },
+        "filmId": 5
+      },
+      {
+        "id": 17,
+        "rating": 900,
+        "comment": "KATT",
+        "createdAt": new Date("2024-05-06T19:44:14.338Z"),
+        "user": { "id": 7, "name": "RateMyMeowie" },
+        "filmId": 49
+      },
+      {
+        "id": 18,
+        "rating": 500,
+        "comment": "KATT(woman)",
+        "createdAt": new Date("2024-05-06T19:45:25.120Z"),
+        "user": { "id": 7, "name": "RateMyMeowie" },
+        "filmId": 67
+      },
+      {
+        "id": 19,
+        "rating": 58,
+        "comment": "Han burde tatt inn en katt",
+        "createdAt": new Date("2024-05-06T19:47:43.119Z"),
+        "user": { "id": 7, "name": "RateMyMeowie" },
+        "filmId": 225
+      },
+      {
+        "id": 20,
+        "rating": 659,
+        "comment": "Kubricks evne til å visuelt formidle skrekk er tilsynelatende omvendt proporsjonalt til hans evne til å bearbeide komplekse rollefigurer",
+        "createdAt": new Date("2024-05-06T21:56:17.509Z"),
+        "user": { "id": 5, "name": "Marius" },
+        "filmId": 60
+      },
+      {
+        "id": 21,
+        "rating": 287,
+        "comment": "Angrer på at jeg kom og så",
+        "createdAt": new Date("2024-05-06T21:57:56.551Z"),
+        "user": { "id": 5, "name": "Marius" },
+        "filmId": 104
+      },
+      {
+        "id": 22,
+        "rating": 365,
+        "comment": "Viste seg å IKKE være en sann historie i det hele tatt???",
+        "createdAt": new Date("2024-05-06T22:00:27.161Z"),
+        "user": { "id": 5, "name": "Marius" },
+        "filmId": 170
+      },
+      {
+        "id": 23,
+        "rating": 821,
+        "comment": "Fascinerende dokumentar om Jim Carreys liv",
+        "createdAt": new Date("2024-05-06T22:02:13.732Z"),
+        "user": { "id": 5, "name": "Marius" },
+        "filmId": 144
+      },
+      {
+        "id": 24,
+        "rating": 871,
+        "comment": "Prakteksemplar på hvor bra fysiske spesialeffekter eldes",
+        "createdAt": new Date("2024-05-06T22:04:16.827Z"),
+        "user": { "id": 5, "name": "Marius" },
+        "filmId": 161
+      },
+      {
+        "id": 25,
+        "rating": 679,
+        "comment": "Har ikke møtt en eneste person som liker denne filmen og klarer å holde seg til filmens viktigste regel",
+        "createdAt": new Date("2024-05-06T22:09:36.709Z"),
+        "user": { "id": 3, "name": "Martin" },
+        "filmId": 12
+      },
+      {
+        "id": 26,
+        "rating": 699,
+        "comment": "Ikke like skummel som Alien vs Predator men fortsatt ganske bra",
+        "createdAt": new Date("2024-05-06T22:12:54.378Z"),
+        "user": { "id": 3, "name": "Martin" },
+        "filmId": 49
+      },
+      {
+        "id": 27,
+        "rating": 578,
+        "comment": "En hel film kun om Dr. Eggman; Sonic har ikke en cameo en gang",
+        "createdAt": new Date("2024-05-06T22:15:19.387Z"),
+        "user": { "id": 3, "name": "Martin" },
+        "filmId": 144
+      },
+      {
+        "id": 28,
+        "rating": 799,
+        "comment": "Tror ikke han fyren på starten faktisk var norsk...",
+        "createdAt": new Date("2024-05-03T22:19:20.683Z"),
+        "user": { "id": 3, "name": "Martin" },
+        "filmId": 161
+      },
+      {
+        "id": 29,
+        "rating": 879,
+        "comment": "Mesterfull blanding av fysisk skrekk og paranoid spenning",
+        "createdAt": new Date("2024-04-22T22:24:40.183Z"),
+        "user": { "id": 1, "name": "Ellie" },
+        "filmId": 161
+      },
+      {
+        "id": 30,
+        "rating": 754,
+        "comment": "Nesten så en blir andpusten av alle action scenene rett etter hverandre",
+        "createdAt": new Date("2024-05-06T22:30:32.365Z"),
+        "user": { "id": 1, "name": "Ellie" },
+        "filmId": 201
+      },
+      {
+        "id": 31,
+        "rating": 789,
+        "comment": "Spøkelseshusfilm med en sci-fi setting og en umenneskelig slasher-skurk",
+        "createdAt": new Date("2024-05-06T22:33:30.027Z"),
+        "user": { "id": 1, "name": "Ellie" },
+        "filmId": 49
+      },
+      {
+        "id": 32,
+        "rating": 648,
+        "comment": "Amogus ripoff",
+        "createdAt": new Date("2024-04-06T22:35:50.544Z"),
+        "user": { "id": 4, "name": "WesthamAndEggs" },
+        "filmId": 161
+      },
+      {
+        "id": 33,
+        "rating": 731,
+        "comment": "Endelig en film som viser faren ved å stole på hunder",
+        "createdAt": new Date("2024-05-01T22:36:46.301Z"),
+        "user": { "id": 7, "name": "RateMyMeowie" },
+        "filmId": 161
+      },
+      {
+        "id": 34,
+        "rating": 654,
+        "comment": "For lite regn",
+        "createdAt": new Date("2024-04-25T22:00:00.000Z"),
+        "user": { "id": 1, "name": "Ellie" },
+        "filmId": 1
       },
     ],
     // nice to have, framtid?
@@ -152,67 +365,277 @@ const model = {
 
     reviewHistory: [
       {
-        id: 1,
-        rating: 834,
-        comment: "Kul film, likte den delen hvor det regnet",
-        createdAt: new Date('Apr 26 2024'),
-        user: { id: 1, name: "Ellie" },
-        filmId: 1,
-        // watchedFormat: "", //blu-ray, netflix, viaplay, piratebay(??) osv
+        "id": 1,
+        "rating": 834,
+        "comment": "Kul film, likte den delen hvor det regnet",
+        "createdAt": new Date("2024-04-25T22:00:00.000Z"),
+        "user": { "id": 3, "name": "Martin" },
+        "filmId": 1
       },
       {
-        id: 6,
-        rating: 434,
-        comment: "Kul film, likte den delen hvor det regnet",
-        createdAt: new Date('Apr 19 2024'),
-        user: { id: 2, name: "Terje" },
-        filmId: 10,
-        // watchedFormat: "", //blu-ray, netflix, viaplay, piratebay(??) osv
+        "id": 6,
+        "rating": 434,
+        "comment": "Tag urself jeg er The Ugly :(",
+        "createdAt": new Date("2024-04-18T22:00:00.000Z"),
+        "user": { "id": 4, "name": "WesthamAndEggs" },
+        "filmId": 10
       },
       {
-        id: 7,
-        rating: 534,
-        comment: "Kul film, likte den delen hvor det regnet",
-        createdAt: new Date('Apr 22 2024'),
-        user: { id: 3, name: "Martin" },
-        filmId: 1,
-        // watchedFormat: "", //blu-ray, netflix, viaplay, piratebay(??) osv
+        "id": 7,
+        "rating": 113,
+        "comment": "Det er 13 Angry Men etter at jeg så denne dritten",
+        "createdAt": new Date("2024-04-21T22:00:00.000Z"),
+        "user": { "id": 5, "name": "Marius" },
+        "filmId": 5
       },
       {
-        id: 2,
-        rating: 911,
-        comment: "Kul film 👍",
-        createdAt: new Date('Apr 18 2024'),
-        user: { id: 1, name: "Ellie" },
-        filmId: 2,
-        // watchedFormat: "", //blu-ray, netflix, viaplay, piratebay(??) osv
+        "id": 2,
+        "rating": 999,
+        "comment": "Perfeksjon er uoppnåelig, men denne filmen er så nært man kommer",
+        "createdAt": new Date("2024-04-17T22:00:00.000Z"),
+        "user": { "id": 1, "name": "Ellie" },
+        "filmId": 251
       },
       {
-        id: 3,
-        rating: 801,
-        comment: "Kul film 👍",
-        createdAt: new Date('Apr 23 2024'),
-        user: { id: 1, name: "Ellie" },
-        filmId: 5,
-        // watchedFormat: "", //blu-ray, netflix, viaplay, piratebay(??) osv
+        "id": 3,
+        "rating": 801,
+        "comment": "Gullstandaren for rettsdramaer, drevet av sterke rollefigurer og ett dypt innblikk i gruppepsykologi",
+        "createdAt": new Date("2024-04-22T22:00:00.000Z"),
+        "user": { "id": 1, "name": "Ellie" },
+        "filmId": 5
       },
       {
-        id: 4,
-        rating: 971,
-        comment: "Kul film 👍",
-        createdAt: new Date('Apr 16 2024'),
-        user: { id: 1, name: "Ellie" },
-        filmId: 6,
-        // watchedFormat: "", //blu-ray, netflix, viaplay, piratebay(??) osv
+        "id": 4,
+        "rating": 753,
+        "comment": "Elsker lister, men denne listen var litt deprimerende",
+        "createdAt": new Date("2024-04-15T22:00:00.000Z"),
+        "user": { "id": 6, "name": "ListeFan" },
+        "filmId": 6
       },
       {
-        id: 5,
-        rating: 891,
-        comment: "Kul film 👍",
-        createdAt: new Date('Apr 22 2024'),
-        user: { id: 1, name: "Ellie" },
-        filmId: 7,
-        // watchedFormat: "", //blu-ray, netflix, viaplay, piratebay(??) osv
+        "id": 5,
+        "rating": 634,
+        "comment": "Den hadde ærlig talt ett tårn for mye",
+        "createdAt": new Date("2024-04-21T22:00:00.000Z"),
+        "user": { "id": 4, "name": "WesthamAndEggs" },
+        "filmId": 14
+      },
+      {
+        "id": 8,
+        "rating": 950,
+        "comment": "Dette er en skikkelig skjult perle, men som den film-kånnesøren jeg er så er dette min favorittfilm",
+        "createdAt": new Date("2024-05-06T19:19:11.837Z"),
+        "user": { "id": 4, "name": "WesthamAndEggs" },
+        "filmId": 12
+      },
+      {
+        "id": 9,
+        "rating": 835,
+        "comment": "Endelig en skikkelig actionfilm, men minus-poeng på grunn av all snakkinga",
+        "createdAt": new Date("2024-05-06T19:21:44.327Z"),
+        "user": { "id": 4, "name": "WesthamAndEggs" },
+        "filmId": 201
+      },
+      {
+        "id": 10,
+        "rating": 867,
+        "comment": "👍 <- Arnold",
+        "createdAt": new Date("2024-05-06T19:24:59.126Z"),
+        "user": { "id": 4, "name": "WesthamAndEggs" },
+        "filmId": 29
+      },
+      {
+        "id": 11,
+        "rating": 333,
+        "comment": "Hitler-barten er i dårlig smak",
+        "createdAt": new Date("2024-05-06T19:28:55.139Z"),
+        "user": { "id": 4, "name": "WesthamAndEggs" },
+        "filmId": 45
+      },
+      {
+        "id": 12,
+        "rating": 669,
+        "comment": "All prompinga var ganske morsom",
+        "createdAt": new Date("2024-05-06T19:33:14.467Z"),
+        "user": { "id": 4, "name": "WesthamAndEggs" },
+        "filmId": 252
+      },
+      {
+        "id": 13,
+        "rating": 99,
+        "comment": "For mange drømmelag",
+        "createdAt": new Date("2024-05-06T19:37:12.788Z"),
+        "user": { "id": 4, "name": "WesthamAndEggs" },
+        "filmId": 13
+      },
+      {
+        "id": 14,
+        "rating": 100,
+        "comment": "Ville vært bedre om den het Raging Cat",
+        "createdAt": new Date("2024-05-06T19:39:42.001Z"),
+        "user": { "id": 7, "name": "RateMyMeowie" },
+        "filmId": 154
+      },
+      {
+        "id": 15,
+        "rating": 467,
+        "comment": "Var det ikke en katt i boksen????",
+        "createdAt": new Date("2024-05-06T19:40:25.221Z"),
+        "user": { "id": 7, "name": "RateMyMeowie" },
+        "filmId": 19
+      },
+      {
+        "id": 16,
+        "rating": 133,
+        "comment": "TOLV MENN og ikke en ENESTE KATT",
+        "createdAt": new Date("2024-05-06T19:43:53.348Z"),
+        "user": { "id": 7, "name": "RateMyMeowie" },
+        "filmId": 5
+      },
+      {
+        "id": 17,
+        "rating": 900,
+        "comment": "KATT",
+        "createdAt": new Date("2024-05-06T19:44:14.338Z"),
+        "user": { "id": 7, "name": "RateMyMeowie" },
+        "filmId": 49
+      },
+      {
+        "id": 18,
+        "rating": 500,
+        "comment": "KATT(woman)",
+        "createdAt": new Date("2024-05-06T19:45:25.120Z"),
+        "user": { "id": 7, "name": "RateMyMeowie" },
+        "filmId": 67
+      },
+      {
+        "id": 19,
+        "rating": 58,
+        "comment": "Han burde tatt inn en katt",
+        "createdAt": new Date("2024-05-06T19:47:43.119Z"),
+        "user": { "id": 7, "name": "RateMyMeowie" },
+        "filmId": 225
+      },
+      {
+        "id": 20,
+        "rating": 659,
+        "comment": "Kubricks evne til å visuelt formidle skrekk er tilsynelatende omvendt proporsjonalt til hans evne til å bearbeide komplekse rollefigurer",
+        "createdAt": new Date("2024-05-06T21:56:17.509Z"),
+        "user": { "id": 5, "name": "Marius" },
+        "filmId": 60
+      },
+      {
+        "id": 21,
+        "rating": 287,
+        "comment": "Angrer på at jeg kom og så",
+        "createdAt": new Date("2024-05-06T21:57:56.551Z"),
+        "user": { "id": 5, "name": "Marius" },
+        "filmId": 104
+      },
+      {
+        "id": 22,
+        "rating": 365,
+        "comment": "Viste seg å IKKE være en sann historie i det hele tatt???",
+        "createdAt": new Date("2024-05-06T22:00:27.161Z"),
+        "user": { "id": 5, "name": "Marius" },
+        "filmId": 170
+      },
+      {
+        "id": 23,
+        "rating": 821,
+        "comment": "Fascinerende dokumentar om Jim Carreys liv",
+        "createdAt": new Date("2024-05-06T22:02:13.732Z"),
+        "user": { "id": 5, "name": "Marius" },
+        "filmId": 144
+      },
+      {
+        "id": 24,
+        "rating": 871,
+        "comment": "Prakteksemplar på hvor bra fysiske spesialeffekter eldes",
+        "createdAt": new Date("2024-05-06T22:04:16.827Z"),
+        "user": { "id": 5, "name": "Marius" },
+        "filmId": 161
+      },
+      {
+        "id": 25,
+        "rating": 679,
+        "comment": "Har ikke møtt en eneste person som liker denne filmen og klarer å holde seg til filmens viktigste regel",
+        "createdAt": new Date("2024-05-06T22:09:36.709Z"),
+        "user": { "id": 3, "name": "Martin" },
+        "filmId": 12
+      },
+      {
+        "id": 26,
+        "rating": 699,
+        "comment": "Ikke like skummel som Alien vs Predator men fortsatt ganske bra",
+        "createdAt": new Date("2024-05-06T22:12:54.378Z"),
+        "user": { "id": 3, "name": "Martin" },
+        "filmId": 49
+      },
+      {
+        "id": 27,
+        "rating": 578,
+        "comment": "En hel film kun om Dr. Eggman; Sonic har ikke en cameo en gang",
+        "createdAt": new Date("2024-05-06T22:15:19.387Z"),
+        "user": { "id": 3, "name": "Martin" },
+        "filmId": 144
+      },
+      {
+        "id": 28,
+        "rating": 799,
+        "comment": "Tror ikke han fyren på starten faktisk var norsk...",
+        "createdAt": new Date("2024-05-03T22:19:20.683Z"),
+        "user": { "id": 3, "name": "Martin" },
+        "filmId": 161
+      },
+      {
+        "id": 29,
+        "rating": 879,
+        "comment": "Mesterfull blanding av fysisk skrekk og paranoid spenning",
+        "createdAt": new Date("2024-04-22T22:24:40.183Z"),
+        "user": { "id": 1, "name": "Ellie" },
+        "filmId": 161
+      },
+      {
+        "id": 30,
+        "rating": 754,
+        "comment": "Nesten så en blir andpusten av alle action scenene rett etter hverandre",
+        "createdAt": new Date("2024-05-06T22:30:32.365Z"),
+        "user": { "id": 1, "name": "Ellie" },
+        "filmId": 201
+      },
+      {
+        "id": 31,
+        "rating": 789,
+        "comment": "Spøkelseshusfilm med en sci-fi setting og en umenneskelig slasher-skurk",
+        "createdAt": new Date("2024-05-06T22:33:30.027Z"),
+        "user": { "id": 1, "name": "Ellie" },
+        "filmId": 49
+      },
+      {
+        "id": 32,
+        "rating": 648,
+        "comment": "Amogus ripoff",
+        "createdAt": new Date("2024-04-06T22:35:50.544Z"),
+        "user": { "id": 4, "name": "WesthamAndEggs" },
+        "filmId": 161
+      },
+      {
+        "id": 33,
+        "rating": 731,
+        "comment": "Endelig en film som viser faren ved å stole på hunder",
+        "createdAt": new Date("2024-05-01T22:36:46.301Z"),
+        "user": { "id": 7, "name": "RateMyMeowie" },
+        "filmId": 161
+      },
+      {
+
+        "id": 34,
+        "rating": 654,
+        "comment": "For lite regn",
+        "createdAt": new Date("2024-04-25T22:00:00.000Z"),
+        "user": { "id": 1, "name": "Ellie" },
+        "filmId": 1
       },
     ],
 

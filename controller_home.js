@@ -1,5 +1,5 @@
 function generateTopMovies() {
-  sortArrayByInput(model.input.sortBy);
+  sortArrayByInput();
   for (let i = 0; i < model.input.movieAmount; i++) {
     const movie = sortedArray[i];
     movieListHTML += /*HTML*/`
@@ -47,18 +47,18 @@ window.onclick = function (event) {
 }
 
 
-function sortArrayByInput(input) {
-  let movieArray = model.input.userFilterMovies.length !== 0 ? model.input.userFilterMovies : model.data.movies;
-  /*   let input = model.input.sortBy; */
+function sortArrayByInput() {
+  // let movieArray = model.input.userFilterMovies.length !== 0 ? model.input.userFilterMovies : model.data.movies;
+  let input = model.input.sortBy; 
   console.log("input:", input);
   sortedArray = model.data.movies.slice().sort(
     (a, b) => (a[input] < b[input]) ? 1 : (a[input] > b[input]) ? -1 : 0
   );
-  model.input.sortBy = input;
+  
 }
 
 function newSorting(input) {
-
+  model.input.sortBy = input;
   updateView();
 }
 
